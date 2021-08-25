@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from '../views/Home.vue'
-import Article  from '../views/Arcticle.vue'
-import Header from '../views/Header.vue'
-import Blogs from '../views/Blogs.vue'
-import UserBlogs from '../views/UserBlogs'
+import Article  from '../components/Article.vue'
+import Header from '../components/Header.vue'
+import AllPosts from '../views/AllPosts.vue'
+//import UserPosts from '../components/UserPosts.vue'
 
 
 const routes = [
@@ -24,9 +24,9 @@ const routes = [
     component: Header,
   },
   {
-    path: 'Blogs',
-    name: 'Blogs',
-    component: Blogs
+    path: '/AllPosts',
+    name: 'AllPosts',
+    component: AllPosts,
   }
 ]
 
