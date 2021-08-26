@@ -4,7 +4,7 @@
         <div 
             class='article-card' 
             :style="{backgroundImage: `url(${img})`}"       
-            
+            :v-on:click="clicker"
             >
             <h3 class="article-title">{{title}}</h3>
         </div>
@@ -19,7 +19,7 @@
             img: String
         },
     }
-// :v-on:click="clicker"
+
 </script>
 
 <style>
