@@ -3,7 +3,7 @@
 import { createApp } from 'vue' //есть в дефолт
 import App from './App.vue'
 import router from './router'
-import store from '../store/store' // есть в дефолт
+import store from './store/store' // есть в дефолт
 
 // 
 
