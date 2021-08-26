@@ -1,15 +1,30 @@
-// import store from './store'
-import { createApp, Vue } from 'vue'
+// import Vue from 'vue'  // нет в дефолт
+
+import { createApp } from 'vue' //есть в дефолт
 import App from './App.vue'
 import router from './router'
+import store from '../store/store' // есть в дефолт
 
-createApp(App).mount('#app')
+// 
 
-new Vue({
-    router,
-    // store,
-    render: h => h(App)
-  }).$mount("#app")
+createApp(App).use(store).use(router).mount('#app')
+// Vue.use(vue-router)
+
+// var router = new router({
+  // routes: [
+  //   { path: 'Home', component: home } 
+  // ]
+// });
+
+
+// нет дефолт
+
+// new Vue({
+//     router,
+//     store,
+//     render: h => h(App)
+//   }).$mount("#app")
+
 
 
 

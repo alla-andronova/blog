@@ -1,8 +1,8 @@
 <template>
-<header>
+<header class="header">
     <img id="logo" alt="Students logo" src="../assets/student.png">
     <ul id="nav">
-        <li><a href="/" target="_blank">Home</a></li>
+        <li><a href="/" target="_blank">Home</a></li> 
         <li><a href="/" target="_blank">All posts</a></li>
     </ul>
     <div class="button-container" > 
@@ -12,46 +12,46 @@
                 v-on:click="clicker"
                 >🧔</button>
         </div>
-        <Dropdown :options="options" v-if="dropdownState"></Dropdown>
+        <!-- <Dropdown :options="options" v-if="dropdownState"></Dropdown> -->
     </header>
 </template>
 
 <script>
-    import Dropdown from './Dropdown.vue'
+    // import Dropdown from './Dropdown.vue'
 
     export default {
         name: 'Header',
         props: {},
         data () {
             return {
-                options: [
-                    {
-                        title: "My Posts", 
-                        url: "my-posts"
-                    },
-                    {
-                        title: "Log in",
-                        url: "login"
-                    }
-                ],
-                dropdownState: false
+                // options: [
+                //     {
+                //         title: "My Posts", 
+                //         url: "my-posts"
+                //     },
+                //     {
+                //         title: "Log in",
+                //         url: "login"
+                //     }
+                // ],
+                // dropdownState: false
             }
         },
-        components: {
-            Dropdown
-        },
-        methods: {
-            clicker () {
-                return this.dropdownState = !this.dropdownState
-            }
-        }
+        // components: {
+        //     Dropdown
+        // },
+        // methods: {
+        //     clicker () {
+        //         return this.dropdownState = !this.dropdownState
+        //     }
+        // }
     }
 
 </script>
 
 <style>
 
-header {
+.header {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -78,7 +78,7 @@ header {
     display: flex;
 }
 
-#plus-btn, #men-btn {
+#plus-btn, #user-btn {
     position: relative;
     border: none;
     background: lightblue;

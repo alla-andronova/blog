@@ -1,3 +1,4 @@
+// есть в дефолт
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from '../views/Home.vue'
@@ -6,7 +7,6 @@ import Header from '../components/Header.vue'
 import AllPosts from '../views/AllPosts.vue'
 //import UserPosts from '../components/UserPosts.vue'
 
-
 const routes = [
   {
     path: '/',
@@ -14,19 +14,22 @@ const routes = [
     component: Home
   },
   {
-    path: '/Article',
+    path: '/article',
     name: 'Article',
     component: Article,
   },
   {
-    path: '/Header',
+    path: '/header',
     name: 'Header',
     component: Header,
   },
   {
-    path: '/AllPosts',
+    path: '/allPosts',
     name: 'AllPosts',
     component: AllPosts,
+    // component: function () {
+    //   return import(/* webpackChunkName: "about" */ '../views/About.vue')
+    // }
   }
 ]
 
