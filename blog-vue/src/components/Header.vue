@@ -65,7 +65,7 @@ import Dropdown from './Dropdown.vue'
 
 header {
     display: flex;
-    width: 80%;
+    width: 100%;
     /* background: rgb(20, 20, 20); */
     text-align: center;
     justify-content: space-between;

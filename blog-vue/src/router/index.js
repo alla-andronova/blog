@@ -1,10 +1,10 @@
 // есть в дефолт
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Home from '../views/Home.vue'
+import Home from '../components/Home.vue'
 import Article  from '../components/Article.vue'
 // import Header from '../components/Header.vue'
-import AllPosts from '../views/AllPosts.vue'
+import AllPosts from '../components/AllPosts.vue'
 //import UserPosts from '../components/UserPosts.vue'
 
 const routes = [
