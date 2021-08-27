@@ -15,7 +15,7 @@
     export default {
         name: 'Dropdown',
         props: {
-            oprions: Array
+            oprions: Array,
         },
     }
     // css generator

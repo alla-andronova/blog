@@ -9,32 +9,26 @@ import { createStore } from 'vuex' // есть в дефолт need
 // до сюда
 
 const store = createStore({ //need
-  // state () {
-    
-  // }
+
 })
 
+export default createStore({
+    state: {
+      dropdown: true
+    },
+    mutations: {
+    },
+    actions: {
+    },
+    modules: {
+    }
+  })
 //const app = createApp({ /* your root component */ })
 
 // Install the store instance as a plugin
 //app.use(store)
 
-// store.commit('increment')
-
 console.log(store.state.count) //need
 
 
 
-
-
-// export default createStore({
-//     state: {
-//       dropdown: true
-//     },
-//     mutations: {
-//     },
-//     actions: {
-//     },
-//     modules: {
-//     }
-//   })

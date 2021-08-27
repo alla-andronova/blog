@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from '../components/Home.vue'
 import Article  from '../components/Article.vue'
-// import Header from '../components/Header.vue'
 import AllPosts from '../components/AllPosts.vue'
 //import UserPosts from '../components/UserPosts.vue'
 
@@ -18,18 +17,10 @@ const routes = [
     name: 'Article',
     component: Article,
   },
-  // {
-  //   path: '/header',
-  //   name: 'Header',
-  //   component: Header,
-  // },
   {
     path: '/allPosts',
     name: 'AllPosts',
     component: AllPosts,
-    // component: function () {
-    //   return import(/* webpackChunkName: "about" */ '../views/About.vue')
-    // }
   }
 ]
 

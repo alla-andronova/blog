@@ -5,11 +5,9 @@
     <ul id="route"> 
     <router-link to="/">Home</router-link> |
     <router-link to="/AllPosts">All Posts</router-link> 
-
-        <!-- <li><a href="/" target="_blank">Home</a></li> |
-        <li><a href="/" target="_blank">All posts</a></li> -->
     </ul>
-    <div id="button-container" > 
+    <div class="button-container">
+
         <button 
             id="plus-btn"
             v-on:click="plusClicker"
@@ -19,8 +17,8 @@
                 id="user-btn"
                 v-on:click="clicker"
                 >👨</button>
-            <Dropdown :options="options" v-if="dropdownState"/>
         </div>
+        <Dropdown :options="options" v-if="dropdownState"/>
     </div>
     </header>
 </template>

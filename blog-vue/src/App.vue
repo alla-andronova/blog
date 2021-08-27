@@ -1,7 +1,6 @@
 <template>
   <div class="app-container">
     <Header />
-    <Home/>
     <ul class="cards-list">
     <Article 
       class="article-card"
@@ -12,6 +11,7 @@
       v-on:click="clicker"
       />
       </ul>
+      <!-- <Login /> -->
       <router-view/>
   </div>
 </template>
@@ -20,7 +20,7 @@
 <script>
 import Header from './components/Header.vue'
 import Article from './components/Article.vue'
-//import Home from './views/Home.vue'
+// import Login from './components/Login.vue'
 // import AddPost from './views/AddPost.vue'
 
 export default {
@@ -41,19 +41,35 @@ export default {
         img: "https://upload.wikimedia.org/wikipedia/commons/7/74/Open_books_stacked.jpg"
         }
       ],
+      authType: "/register"
     }  
   },
   
  components: {
     Header,
     Article,
-    //Home,
-    // AddPost
+    // Login
   },
   methods: {
     clicker () {
       console.log('Clickerino works')
-    }
+    },
+    // submitFn () {
+    //   console.log('logged in!')
+    // },
+    // authSwitcher () {
+    // const navUrl = "/register";
+
+    // if (navUrl === "/register") {
+    //   return this.authType = {
+    //     title: "Login",
+    //     callBack: this.submitFn
+    //   }
+    // }
+//   }
+// },
+//   mounted() {
+//     this.authSwitcher()
   }
 }
 </script>
