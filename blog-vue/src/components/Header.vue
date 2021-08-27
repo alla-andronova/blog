@@ -1,88 +1,102 @@
 <template>
-<header class="header">
-    <img id="logo" alt="Students logo" src="../assets/student.png">
-    <ul id="nav">
-        <li><a href="/" target="_blank">Home</a></li> 
-        <li><a href="/" target="_blank">All posts</a></li>
+<!-- <div> -->
+<header>
+    <div class="container">
+    <img class="logo" alt="Students logo" src="../assets/student.png">
+    <ul class="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/AllPosts">All Posts</router-link> 
+
+        <!-- <li><a href="/" target="_blank">Home</a></li> |
+        <li><a href="/" target="_blank">All posts</a></li> -->
     </ul>
     <div class="button-container" > 
-        <button id="plus-btn">➕</button>
+        <button 
+            class="plus-btn"
+            v-on:click="plusClicker"
+            >➕</button>
+
             <button
-                id="user-btn"
+                class="user-btn"
                 v-on:click="clicker"
-                >🧔</button>
+                >👨</button>
+            <Dropdown :options="options" v-if="dropdownState"/>
         </div>
-        <!-- <Dropdown :options="options" v-if="dropdownState"></Dropdown> -->
+    </div>
     </header>
+    <!-- </div> -->
 </template>
 
 <script>
-    // import Dropdown from './Dropdown.vue'
+import Dropdown from './Dropdown.vue'
 
     export default {
         name: 'Header',
         props: {},
         data () {
             return {
-                // options: [
-                //     {
-                //         title: "My Posts", 
-                //         url: "my-posts"
-                //     },
-                //     {
-                //         title: "Log in",
-                //         url: "login"
-                //     }
-                // ],
-                // dropdownState: false
+                options: [
+                    {
+                        title: "My Posts", 
+                        url: "my-posts"
+                    },
+                    {
+                        title: "Log in",
+                        url: "login"
+                    }
+                ],
+                dropdownState: false
             }
         },
-        // components: {
-        //     Dropdown
-        // },
-        // methods: {
-        //     clicker () {
-        //         return this.dropdownState = !this.dropdownState
-        //     }
-        // }
+        components: {
+            Dropdown
+        },
+        methods: {
+            clicker () {
+                return this.dropdownState = !this.dropdownState
+            },
+            plusClicker () {
+                console.log('PlusCliker')
+            }
+        }
     }
 
 </script>
 
 <style>
 
-.header {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    border: 1px solid #ff0ff0;
+.container {
+  width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
 }
-
-#nav {
-    display: flex;
-    flex: 1;
-    justify-content: start;
-    list-style: none;
-}
-
-#nav > li {
-    margin-left: 0.5rem;
-}
-
-#logo {
-    width: 2rem;
-    height: 2rem;
-}
-
-.button-container {
-    display: flex;
-}
-
-#plus-btn, #user-btn {
-    position: relative;
-    border: none;
-    background: lightblue;
-    margin-left: 0.5rem;
-}
-
+/* 
+ header {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        border: 1px solid #430fff;
+    }
+.nav {
+        display: flex;
+        flex: 1;
+        justify-content: start;
+        list-style: none;
+    }
+.nav > li {
+        margin-left: 0.5rem;
+    } */
+.logo {
+        width: 65px;
+        height: 65px;
+    }
+/* .button-container {
+        display: flex;
+    }
+.plus-btn, .user-btn {
+        position: relative;
+        border: none;
+        background: lightblue;
+        margin-left: 0.5rem;
+    }  */
 </style>

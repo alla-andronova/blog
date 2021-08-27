@@ -1,25 +1,24 @@
 <template>
-  <div  class="page-container">
-    <Header/>
+  <div class="page-container">
+    <Header />
+    <Home/>
     <Article
       v-for="article in articleArray"
       :title="article.title"
       :img="article.img"
       :key="article.title"
-      
+      v-on:click="clicker"
       />
-      <!-- v-on:click="clicker" -->
       <router-view/>
   </div>
-  
 </template>
-<!-- <router-link to="/">Home</router-link> |
-    <router-link to="/AllPosts">Posts</router-link> |  -->
 
 
 <script>
 import Header from './components/Header.vue'
 import Article from './components/Article.vue'
+import Home from './views/Home.vue'
+// import AddPost from './views/AddPost.vue'
 
 export default {
   name: 'App',
@@ -27,7 +26,7 @@ export default {
     return {
       articleArray: [
         {
-        title: 'Books 1',
+        title: 'Book 1',
         img: "https://upload.wikimedia.org/wikipedia/commons/5/5a/Books_HD_%288314929977%29.jpg"
         },
         {
@@ -44,33 +43,53 @@ export default {
   
  components: {
     Header,
-    Article
+    Article,
+    Home,
+    // AddPost
   },
-  // methods: {
-  //   clicker () {
-  //     console.log('Clickerino works')
-  //   }
-  // }
+  methods: {
+    clicker () {
+      console.log('Clickerino works')
+    }
+  }
 }
 </script>
 
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  color: #222;
+
+
+
+
+
+
+/* body {
+  background: rgb(234, 238, 240);
+  color: black;
   font-family: Open-sans, sans-serif;
 }
 
-.page-container {
-  width: 100%;
-  max-width: 60rem;
-  height: 100%;
+header {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border: 1px solid #430fff;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  max-width: 900px;
   margin: auto;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0;
-}
+  padding: 30px 0;
+  
+  @media (max-width: 768px) {
+    .page-container {
+      flex-direction: column;
+      align-items: center; 
+    }
+  }
+} */
 </style>

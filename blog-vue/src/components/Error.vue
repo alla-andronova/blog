@@ -9,6 +9,6 @@
 <style>
 .error {
     text-align: center;
-    color: darkred;
+    color: rgb(0, 0, 0);
 }
 </style>
