@@ -1,30 +1,28 @@
 <template>
-<!-- <div> -->
 <header>
     <div class="container">
-    <img class="logo" alt="Students logo" src="../assets/student.png">
-    <ul class="nav">
+    <img id="logo" alt="Students logo" src="../assets/student.png">
+    <ul id="route"> 
     <router-link to="/">Home</router-link> |
     <router-link to="/AllPosts">All Posts</router-link> 
 
         <!-- <li><a href="/" target="_blank">Home</a></li> |
         <li><a href="/" target="_blank">All posts</a></li> -->
     </ul>
-    <div class="button-container" > 
+    <div id="button-container" > 
         <button 
-            class="plus-btn"
+            id="plus-btn"
             v-on:click="plusClicker"
             >➕</button>
 
             <button
-                class="user-btn"
+                id="user-btn"
                 v-on:click="clicker"
                 >👨</button>
             <Dropdown :options="options" v-if="dropdownState"/>
         </div>
     </div>
     </header>
-    <!-- </div> -->
 </template>
 
 <script>
@@ -65,38 +63,60 @@ import Dropdown from './Dropdown.vue'
 
 <style>
 
+header {
+    display: flex;
+    width: 80%;
+    /* background: rgb(20, 20, 20); */
+    text-align: center;
+    justify-content: space-between;
+    /* justify-content: center; */
+    border: 3px solid #000000;
+}
+
 .container {
+    display: flex;
+    flex-direction: row;
   width: 1200px;
   padding: 0 15px;
   margin: 0 auto;
 }
-/* 
- header {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        border: 1px solid #430fff;
+
+#route {
+    display: flex;
+    flex: 1;
+    justify-content: start;
+    list-style: none;
+}
+
+
+/* #route > li {
+    margin-left: 8px;
+} */
+
+#logo {
+    width: 55px;
+    height: 55px;
+}
+
+ .button-container {
+    display: flex;
+}
+
+#plus-btn{
+    width: 40px;
+    height: 40px;
+}
+#user-btn {
+    width: 40px;
+    height: 40px;
+}
+
+#plus-btn, #user-btn {
+    position: relative;
+    border: none;
+    background: rgb(208, 252, 127);
+    margin-left: 8px;
     }
-.nav {
-        display: flex;
-        flex: 1;
-        justify-content: start;
-        list-style: none;
-    }
-.nav > li {
-        margin-left: 0.5rem;
-    } */
-.logo {
-        width: 65px;
-        height: 65px;
-    }
-/* .button-container {
-        display: flex;
-    }
-.plus-btn, .user-btn {
-        position: relative;
-        border: none;
-        background: lightblue;
-        margin-left: 0.5rem;
-    }  */
+
+
 </style>

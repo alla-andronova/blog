@@ -1,14 +1,17 @@
 <template>
-  <div class="page-container">
+  <div class="app-container">
     <Header />
     <Home/>
-    <Article
+    <ul class="cards-list">
+    <Article 
+      class="article-card"
       v-for="article in articleArray"
       :title="article.title"
       :img="article.img"
       :key="article.title"
       v-on:click="clicker"
       />
+      </ul>
       <router-view/>
   </div>
 </template>
@@ -17,7 +20,7 @@
 <script>
 import Header from './components/Header.vue'
 import Article from './components/Article.vue'
-import Home from './views/Home.vue'
+//import Home from './views/Home.vue'
 // import AddPost from './views/AddPost.vue'
 
 export default {
@@ -44,7 +47,7 @@ export default {
  components: {
     Header,
     Article,
-    Home,
+    //Home,
     // AddPost
   },
   methods: {
@@ -57,39 +60,35 @@ export default {
 
 <style>
 
-
-
-
-
-
-/* body {
-  background: rgb(234, 238, 240);
-  color: black;
-  font-family: Open-sans, sans-serif;
-}
-
-header {
-  display: flex;
+body {
+  margin: 0;
+  padding: 0;
   width: 100%;
-  justify-content: space-between;
-  border: 1px solid #430fff;
+  background-color: rgb(227, 233, 236);
 }
 
-.page-container {
+
+.app-container {
+  flex: 1 1 auto;
   display: flex;
-  flex-direction: row;
-  height: 100%;
-  max-width: 900px;
-  margin: auto;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 0;
-  
-  @media (max-width: 768px) {
-    .page-container {
-      flex-direction: column;
-      align-items: center; 
-    }
-  }
-} */
+  flex-direction: column;
+  padding: 32px 20px 32px 20px;
+}
+
+.cards-list {
+    display: flex;
+    flex-direction: row;
+    order: 2;
+    /* justify-content: center; */
+    /* align-items: center; */
+
+    /* flex: 0 1 auto; */
+    
+    /* justify-content: space-between; */
+    /* list-style: none; */
+    padding: 0;
+    /* white-space: nowrap; */
+
+}
+
 </style>

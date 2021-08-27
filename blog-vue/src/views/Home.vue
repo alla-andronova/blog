@@ -1,5 +1,5 @@
 <template>
-<p>This is Home</p>
+<h1>The most recent posts</h1>
 </template>
 
 <script>
@@ -11,6 +11,10 @@ export default {
 
 <style>
 
+h1 {
+    color: black;
+    text-align: center;
+}
 
 
 </style>
