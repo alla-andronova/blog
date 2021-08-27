@@ -18,25 +18,37 @@ class LoginController {
   async handleLogin(req, res) {
     const { error } = schema.validate(req.body);
     if (error) {
-      res.json({ validations: error });
+      res.json({ validations: error }).status();
       return;
     }
 
     const { email, password } = req.body;
-    const user = await userRepository.findByEmail(email);
-    if (!user) {
-      res.json({ error: 'login failed' });
+
+    try {
+      const user = await userRepository.findByEmail(email);
+      if (!user) {
+        res.json({ error: 'login failed' });
+        return;
+      }
+
+      if (!(await user.isPasswordCorrect(password))) {
+        res.json({ error: 'login failed' });
+        return;
+      }
+    } catch (error) {
+      res
+        .json({
+          error: 'something went wrong',
+        })
+        .status(500);
       return;
     }
 
-    if (!(await user.isPasswordCorrect(password))) {
-      res.json({ error: 'login failed' });
-      return;
-    }
     const token = user.createToken();
     res.json({
       message: 'user logged in succesfully',
       token,
+      user,
     });
   }
 }

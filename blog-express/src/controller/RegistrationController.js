@@ -24,20 +24,30 @@ class RegistrationController {
       return;
     }
 
-    const user = await this.userRepository.findByEmail(req.body.email);
-    if (user) {
-      res.json({ error: 'user already exist' });
+    try {
+      const user = await this.userRepository.findByEmail(req.body.email);
+      if (user) {
+        res.json({ error: 'user already exist' });
+        return;
+      }
+
+      const newUser = new UserModel(req.body);
+      await newUser.setPassword(req.body.password);
+
+      await this.userRepository.createUser(newUser);
+
+      res.json({
+        message: 'user created succesfully',
+        newUser,
+      });
+    } catch (error) {
+      res
+        .json({
+          error: 'something went wrong',
+        })
+        .status(500);
       return;
     }
-
-    const newUser = new UserModel(req.body);
-    await newUser.setPassword(req.body.password);
-    this.userRepository.createUser(newUser);
-    const token = newUser.createToken();
-    res.json({
-      message: 'user created succesfully',
-      token,
-    });
   }
 }
 

@@ -18,7 +18,7 @@ class UserModel {
   }
 
   createToken() {
-    return jwt.sign({ email: this.email }, 'shhhhh');
+    return jwt.sign({ id: this.id }, process.env.ACCESS_TOKEN_SECRET);
   }
 }
 
