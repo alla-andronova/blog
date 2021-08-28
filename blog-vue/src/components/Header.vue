@@ -8,9 +8,6 @@
     </ul>
     <div class="button-container">
         <div>
-        <!-- <router-link to="AddPost"></router-link> -->
-        <!-- <v-btn to="/newpage">Next Page</v-btn> -->
-        <!-- v-btn this.$router.push to="/addPost" -->
         <button 
             id="plus-btn"
             @click="openAddPage()"
@@ -60,9 +57,6 @@ import AddPost from './AddPost.vue';
             clicker () {
                 return this.dropdownState = !this.dropdownState
             },
-            // plusClicker () {
-            //     // console.log('PlusCliker')
-            // },
             openAddPage() {
                 this.$router.push('./AddPost')
             }
