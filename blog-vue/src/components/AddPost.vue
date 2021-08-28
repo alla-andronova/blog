@@ -1,31 +1,30 @@
 <template>
     <div>
         <form>
-            <!-- <label>Title: </label>
+            <label>Title: </label>
             <input
                 v-model="addTitle"
             >
             <label>Post: </label>
             <input
 
-            > -->
+            >
         </form>
 
-        <!-- <button>Add</button> -->
+        <button>Add</button>
     </div>
 </template>
 
 <script>
     export default {
-        // name: 'AddPost',
-        // data() {
-        //     return {
+        name: 'AddPost',
+        data() {
+            return {
 
-        //     }
-        // },
-        // methods: {
-        //     addTitle
-        // }
+            }
+        },
+        methods: {
+        }
     }
 </script>
 

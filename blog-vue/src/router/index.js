@@ -3,7 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from '../components/Home.vue'
 import Article  from '../components/Article.vue'
-import AllPosts from '../components/AllPosts.vue'
+import AddPost from '../components/AddPost.vue'
+import AllPosts from '../components/AllPosts'
 //import UserPosts from '../components/UserPosts.vue'
 
 const routes = [
@@ -18,7 +19,12 @@ const routes = [
     component: Article,
   },
   {
-    path: '/allPosts',
+    path: '/AddPost',
+    name: 'AddPost',
+    component: AddPost,
+  },
+  {
+    path: '/AllPosts',
     name: 'AllPosts',
     component: AllPosts,
   }

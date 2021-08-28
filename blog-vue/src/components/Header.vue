@@ -7,16 +7,23 @@
     <router-link to="/AllPosts">All Posts</router-link> 
     </ul>
     <div class="button-container">
-
+        <div>
+        <!-- <router-link to="AddPost"></router-link> -->
+        <!-- <v-btn to="/newpage">Next Page</v-btn> -->
+        <!-- v-btn this.$router.push to="/addPost" -->
         <button 
             id="plus-btn"
-            v-on:click="plusClicker"
+            @click="openAddPage()"
             >➕</button>
+            <!-- v-on:click="plusClicker" -->
+        </div>
+        <AddPost v-if="addPage" />
 
             <button
                 id="user-btn"
-                v-on:click="clicker"
+                @click="clicker"
                 >👨</button>
+                
         </div>
         <Dropdown :options="options" v-if="dropdownState"/>
     </div>
@@ -24,7 +31,8 @@
 </template>
 
 <script>
-import Dropdown from './Dropdown.vue'
+import Dropdown from './Dropdown.vue';
+import AddPost from './AddPost.vue';
 
     export default {
         name: 'Header',
@@ -41,18 +49,22 @@ import Dropdown from './Dropdown.vue'
                         url: "login"
                     }
                 ],
-                dropdownState: false
+                dropdownState: false,
             }
         },
         components: {
-            Dropdown
+            Dropdown,
+            AddPost,
         },
         methods: {
             clicker () {
                 return this.dropdownState = !this.dropdownState
             },
-            plusClicker () {
-                console.log('PlusCliker')
+            // plusClicker () {
+            //     // console.log('PlusCliker')
+            // },
+            openAddPage() {
+                this.$router.push('./AddPost')
             }
         }
     }
