@@ -1,126 +1,116 @@
 <template>
-<header>
-    <div class="container">
-    <img id="logo" alt="Students logo" src="../assets/student.png">
-    <ul id="route"> 
-    <router-link to="/">Home</router-link> |
-    <router-link to="/AllPosts">All Posts</router-link> 
-    </ul>
-    <div class="button-container">
-        <div>
-        <button 
-            id="plus-btn"
-            @click="openAddPage()"
-            >➕</button>
-            <!-- v-on:click="plusClicker" -->
+  <div>
+    <header>
+      <div class="header-wrapper">
+        <div class="route-wrapper">
+          <img id="logo" alt="Students logo" src="../assets/student.png" />
+          <div class="route">
+              <router-link to="/">Home</router-link> |
+          </div>
+          <div class="route">
+            <router-link to="/AllPosts">All Posts</router-link> |
+          </div>
         </div>
-        <AddPost v-if="addPage" />
+        
+          <div class="button-container">
+            <div>
+              <button id="plus-btn" @click="openAddPage()">➕</button>
+              <!-- v-on:click="plusClicker" -->
+            </div>
+            <AddPost v-if="addPage" />
 
-            <button
-                id="user-btn"
-                @click="clicker"
-                >👨</button>
-                
-        </div>
-        <Dropdown :options="options" v-if="dropdownState"/>
-    </div>
+            <button id="user-btn" @click="clicker">👨</button>
+          
+          </div>
+        <Dropdown :options="options" v-if="dropdownState" />
+      </div>
     </header>
+  </div>
 </template>
 
 <script>
 import Dropdown from './Dropdown.vue';
 import AddPost from './AddPost.vue';
 
-    export default {
-        name: 'Header',
-        props: {},
-        data () {
-            return {
-                options: [
-                    {
-                        title: "My Posts", 
-                        url: "my-posts"
-                    },
-                    {
-                        title: "Log in",
-                        url: "login"
-                    }
-                ],
-                dropdownState: false,
-            }
+export default {
+  name: 'Header',
+  props: {},
+  data() {
+    return {
+      options: [
+        {
+          title: 'My Posts',
+          url: 'my-posts',
         },
-        components: {
-            Dropdown,
-            AddPost,
+        {
+          title: 'Log in',
+          url: 'login',
         },
-        methods: {
-            clicker () {
-                return this.dropdownState = !this.dropdownState
-            },
-            openAddPage() {
-                this.$router.push('./AddPost')
-            }
-        }
-    }
-
+      ],
+      dropdownState: false,
+    };
+  },
+  components: {
+    Dropdown,
+    AddPost,
+  },
+  methods: {
+    clicker() {
+      return (this.dropdownState = !this.dropdownState);
+    },
+    openAddPage() {
+      this.$router.push('./AddPost');
+    },
+  },
+};
 </script>
 
 <style>
-
-header {
+.header-wrapper {
     display: flex;
-    width: 100%;
-    /* background: rgb(20, 20, 20); */
-    text-align: center;
     justify-content: space-between;
-    /* justify-content: center; */
-    border: 3px solid #000000;
 }
 
-.container {
+.route-wrapper {
     display: flex;
-    flex-direction: row;
-  width: 1200px;
-  padding: 0 15px;
-  margin: 0 auto;
 }
 
-#route {
-    display: flex;
-    flex: 1;
-    justify-content: start;
-    list-style: none;
+.route {
+    padding: 30px;
 }
 
+.route a {
+    font-weight: bold;
+    color: #2c3e50;
+}
 
-/* #route > li {
-    margin-left: 8px;
-} */
+.route a.router-link-exact-active {
+    color: #42b983;
+}
 
 #logo {
-    width: 55px;
-    height: 55px;
+  width: 55px;
+  height: 55px;
+    border: 1px solid #000000;
+
 }
 
- .button-container {
-    display: flex;
+.button-container {
+  display: flex;
 }
 
-#plus-btn{
-    width: 40px;
-    height: 40px;
+#plus-btn {
+  width: 40px;
+  height: 40px;
 }
 #user-btn {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 }
 
 #plus-btn, #user-btn {
-    position: relative;
-    border: none;
-    background: rgb(208, 252, 127);
-    margin-left: 8px;
-    }
-
-
+  /* border: none; */
+  background: rgb(187, 247, 128);
+  margin-left: 8px;
+}
 </style>
