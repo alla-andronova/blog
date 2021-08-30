@@ -13,16 +13,18 @@
         </div>
         
           <div class="button-container">
-            <div>
-              <button id="plus-btn" @click="openAddPage()">➕</button>
-              <!-- v-on:click="plusClicker" -->
+              <div class="button-container">
+                <button 
+                    id="plus-btn"
+                    v-on:click='openAddPostPage'
+                    >➕</button>
+                <button
+                    id="user-btn"
+                    v-on:click="userBtn"
+                    >👤</button>
             </div>
-            <AddPost v-if="addPage" />
-
-            <button id="user-btn" @click="clicker">👨</button>
-          
+            <Dropdown :options="options" v-if="dropdownState"/>
           </div>
-        <Dropdown :options="options" v-if="dropdownState" />
       </div>
     </header>
   </div>
@@ -30,38 +32,39 @@
 
 <script>
 import Dropdown from './Dropdown.vue';
-import AddPost from './AddPost.vue';
+// import AddPost from './AddPost.vue';
 
 export default {
   name: 'Header',
-  props: {},
-  data() {
-    return {
-      options: [
-        {
-          title: 'My Posts',
-          url: 'my-posts',
+        props: {},
+        data () {
+            return {
+                options: [
+                    {
+                        title: "My posts",
+                        url: "my-posts"
+                    },
+                    {
+                        title: "Log in",
+                        url: "login"
+                    }
+                ],
+                dropdownState: false
+            }
         },
-        {
-          title: 'Log in',
-          url: 'login',
+        components: {
+            Dropdown
         },
-      ],
-      dropdownState: false,
-    };
-  },
-  components: {
-    Dropdown,
-    AddPost,
-  },
-  methods: {
-    clicker() {
-      return (this.dropdownState = !this.dropdownState);
+        methods: {
+         userBtn () {
+            return this.dropdownState = !this.dropdownState
+        },
+        openAddPostPage() {
+            this.$router.push('./AddPost');
     },
-    openAddPage() {
-      this.$router.push('./AddPost');
-    },
-  },
+      }    
+
+    
 };
 </script>
 

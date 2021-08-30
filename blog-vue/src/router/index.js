@@ -1,10 +1,10 @@
 // есть в дефолт
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Home from '../components/Home.vue'
-import Article  from '../components/Article.vue'
+import Home from '../views/Home.vue'
+import AllPosts from '../views/AllPosts'
 import AddPost from '../components/AddPost.vue'
-import AllPosts from '../components/AllPosts'
+
 //import UserPosts from '../components/UserPosts.vue'
 
 const routes = [
@@ -14,25 +14,20 @@ const routes = [
     component: Home
   },
   {
-    path: '/article',
-    name: 'Article',
-    component: Article,
+    path: '/AllPosts',
+    name: 'AllPosts',
+    component: AllPosts,
   },
   {
     path: '/AddPost',
     name: 'AddPost',
     component: AddPost,
   },
-  {
-    path: '/AllPosts',
-    name: 'AllPosts',
-    component: AllPosts,
-  }
-]
+ ] 
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
 
-export default router
+export default router;
