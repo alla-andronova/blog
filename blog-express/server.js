@@ -8,7 +8,7 @@ const server = express();
 
 // used to parse req.body(form) for POST,PUT requests
 server.use(bodyParser.urlencoded({ extended: false }));
-server.use(express.json());
+server.use(cors({ origin: '*' }));
 
 const RegistrationController = require('./src/controller/RegistrationController');
 const LoginController = require('./src/controller/LoginController');
