@@ -1,6 +1,6 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const cors = require('cors');
+const cors = require('cors')
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -8,12 +8,15 @@ const server = express();
 
 // used to parse req.body(form) for POST,PUT requests
 server.use(bodyParser.urlencoded({ extended: false }));
+server.use(express.json());
 server.use(cors({ origin: '*' }));
 
 const RegistrationController = require('./src/controller/RegistrationController');
 const LoginController = require('./src/controller/LoginController');
 const MyPostsController = require('./src/controller/MyPostsController');
 const PostsController = require('./src/controller/PostsController');
+const SongsController = require('./src/controller/SongsController');
+const MySongsController = require('./src/controller/MySongsController');
 
 server.post('/login', LoginController.handleLogin.bind(LoginController));
 
@@ -32,11 +35,19 @@ server.get(
   authenticateToken,
   MyPostsController.getAllPosts.bind(MyPostsController),
 );
+
+server.get('/posts', PostsController.getAllPosts.bind(PostsController));
+server.get(
+  '/posts/recent',
+  PostsController.getRecentPosts.bind(PostsController),
+);
+
 server.put(
   '/my-posts/:id(\\d+)',
   authenticateToken,
   MyPostsController.updatePost.bind(MyPostsController),
 );
+
 server.delete(
   '/my-posts/:id(\\d+)',
   authenticateToken,
@@ -48,6 +59,26 @@ server.get(
   '/posts/recent',
   PostsController.getRecentPosts.bind(PostsController),
 );
+
+server.post(
+  '/my-songs',
+  authenticateToken,
+  MySongsController.createSong.bind(MySongsController),
+);
+server.get(
+  '/my-songs',
+  authenticateToken,
+  MySongsController.getAllSongs.bind(MySongsController),
+);
+
+server.get('/home', SongsController.getAllSongs.bind(SongsController));
+server.get(
+  '/home/recent',
+  SongsController.getRecentSongs.bind(SongsController),
+);
+
+
+
 
 //middleware
 function authenticateToken(req, res, next) {

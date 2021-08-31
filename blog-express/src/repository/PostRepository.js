@@ -35,7 +35,7 @@ class PostRepository {
         }),
     );
   }
-
+  
   async findPostById(id) {
     const [
       rows,
@@ -78,6 +78,7 @@ class PostRepository {
       rows,
     ] = await this._db.promise().execute('DELETE FROM posts where id=?', [id]);
   }
+
 
   async findAllPosts() {
     const [rows] = await this._db
