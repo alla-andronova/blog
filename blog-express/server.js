@@ -37,7 +37,6 @@ server.put(
   authenticateToken,
   MyPostsController.updatePost.bind(MyPostsController),
 );
-
 server.delete(
   '/my-posts/:id(\\d+)',
   authenticateToken,
