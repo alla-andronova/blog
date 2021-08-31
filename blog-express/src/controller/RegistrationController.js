@@ -36,9 +36,13 @@ class RegistrationController {
 
       await this.userRepository.createUser(newUser);
 
+      const savedUser = await this.userRepository.findByEmail(req.body.email);
+      const token = await savedUser.createToken();
+
       res.json({
         message: 'user created succesfully',
-        newUser,
+        savedUser,
+        token,
       });
     } catch (error) {
       res
