@@ -38,6 +38,12 @@ server.put(
   MyPostsController.updatePost.bind(MyPostsController),
 );
 
+server.delete(
+  '/my-posts/:id(\\d+)',
+  authenticateToken,
+  MyPostsController.deletePost.bind(MyPostsController),
+);
+
 server.get('/posts', PostsController.getAllPosts.bind(PostsController));
 server.get(
   '/posts/recent',

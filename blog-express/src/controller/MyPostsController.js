@@ -36,6 +36,32 @@ class MyPostsController {
     }
   }
 
+  async deletePost(req, res) {
+    const { id } = req.params;
+    const userId = req.user.id;
+    try {
+      const post = await postRepository.findPostById(id);
+
+      if (!post || post.userId !== userId) {
+        res
+          .json({
+            error: 'post not found',
+          })
+          .status(404);
+      } else {
+        await postRepository.deletePost(id);
+
+        res.json({ message: 'the post deleted succesfully' });
+      }
+    } catch (error) {
+      res
+        .json({
+          error: 'something went wrong',
+        })
+        .status(500);
+    }
+  }
+
   async updatePost(req, res) {
     const { error } = schema.validate(req.body);
     if (error) {
