@@ -36,6 +36,43 @@ class PostRepository {
     );
   }
 
+  async findPostById(id) {
+    const [
+      rows,
+    ] = await this._db
+      .promise()
+      .execute(
+        'SELECT posts.*, users.nickname FROM posts JOIN users on users.id = posts.user_id WHERE posts.id=? ',
+        [id],
+      );
+    if (rows.length === 0) {
+      return null;
+    }
+
+    const row = rows[0];
+
+    return new PostModel({
+      id: row.id,
+      userId: row.user_id,
+      title: row.title,
+      text: row.text,
+      createdAt: row.created_at,
+      author: row.nickname,
+    });
+  }
+
+  async updatePost(post) {
+    const [
+      rows,
+    ] = await this._db
+      .promise()
+      .execute('UPDATE posts SET title = ?, text = ? WHERE id = ?', [
+        post.title,
+        post.text,
+        post.id,
+      ]);
+  }
+
   async findAllPosts() {
     const [rows] = await this._db
       .promise()
