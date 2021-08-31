@@ -1,6 +1,6 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -31,6 +31,11 @@ server.get(
   '/my-posts',
   authenticateToken,
   MyPostsController.getAllPosts.bind(MyPostsController),
+);
+server.put(
+  '/my-posts/:id(\\d+)',
+  authenticateToken,
+  MyPostsController.updatePost.bind(MyPostsController),
 );
 
 server.get('/posts', PostsController.getAllPosts.bind(PostsController));

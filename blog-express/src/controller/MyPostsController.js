@@ -36,6 +36,42 @@ class MyPostsController {
     }
   }
 
+  async updatePost(req, res) {
+    const { error } = schema.validate(req.body);
+    if (error) {
+      res.json({ validations: error }).status(400);
+      return;
+    }
+
+    const { id } = req.params;
+    const userId = req.user.id;
+    try {
+      const post = await postRepository.findPostById(id);
+
+      if (!post || post.userId !== userId) {
+        res
+          .json({
+            error: 'post not found',
+          })
+          .status(404);
+      } else {
+        const { title, text } = req.body;
+        post.title = title;
+        post.text = text;
+
+        await postRepository.updatePost(post);
+
+        res.json(post);
+      }
+    } catch (error) {
+      res
+        .json({
+          error: 'something went wrong',
+        })
+        .status(500);
+    }
+  }
+
   async getAllPosts(req, res) {
     const userId = req.user.id;
     try {
