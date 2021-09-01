@@ -74,7 +74,7 @@ export default {
     width: 65%;
     margin: 3rem auto 3rem;
     border: 0.3rem solid black;
-    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    border-radius: 4% 12% 10% 8% / 2% 2% 4% 8%;
     
 }
 .main.content{

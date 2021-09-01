@@ -36,6 +36,71 @@ const schema = Joi.object({
         }
     }
 
+    async deleteSong(req, res) {
+        const { id } = req.params;
+        const user_id = req.user.id;
+        try {
+        const song = await songRepository.findSongById(id);
+    
+        if (!song || song.user_id !== user_id) {
+            res
+            .json({
+                error: 'song not found',
+            })
+            .status(404);
+        } else {
+            await songRepository.deleteSong(id);
+    
+            res.json({ message: 'song deleted succesfully' });
+        }
+        } catch (error) {
+        res
+            .json({
+            error: 'something went wrong',
+            })
+            .status(500);
+        }
+    }
+    
+    async updateSong(req, res) {
+        const { error } = schema.validate(req.body);
+        if (error) {
+        res.json({ validations: error }).status(400);
+        return;
+        }
+    
+        const { id } = req.params;
+        const user_id = req.user.id;
+        try {
+        const song = await songRepository.findSongById(id);
+    
+        if (!song || song.user_id !== user_id) {
+            res
+            .json({
+                error: 'song not found',
+            })
+            .status(404);
+        } else {
+            const { title, artist, genre, album , albumImageUrl } = req.body;
+            song.title = title,
+            song.artist = artist,
+            song.genre = genre,
+            song.album = album,
+            song.albumImageUrl = albumImageUrl,
+    
+            await songRepository.updateSong(song);
+    
+            res.json(song);
+        }
+        } catch (error) {
+        res
+            .json({
+            error: 'something went wrong',
+            })
+            .status(500);
+        }
+    }
+
     async getAllSongs(req, res) {
         const user_id = req.user.id;
         try {

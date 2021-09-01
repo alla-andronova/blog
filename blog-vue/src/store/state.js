@@ -7,5 +7,7 @@ const state = {
   recentPosts: [],
   recentSongs: [],
   allSongs: [],
+  updateSong:[],
+  delteSong:[],
 };
 export default state;

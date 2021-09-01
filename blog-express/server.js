@@ -25,43 +25,45 @@ server.post(
   RegistrationController.handleRegistration.bind(RegistrationController),
 );
 
-server.post(
+            server.post(
   '/my-posts',
   authenticateToken,
   MyPostsController.createPost.bind(MyPostsController),
 );
-server.get(
+            server.get(
   '/my-posts',
   authenticateToken,
   MyPostsController.getAllPosts.bind(MyPostsController),
 );
 
-server.get('/posts', PostsController.getAllPosts.bind(PostsController));
-server.get(
-  '/posts/recent',
-  PostsController.getRecentPosts.bind(PostsController),
-);
+            server.get('/posts', PostsController.getAllPosts.bind(PostsController));
 
-server.put(
-  '/my-posts/:id(\\d+)',
-  authenticateToken,
-  MyPostsController.updatePost.bind(MyPostsController),
-);
+            server.get(
+            '/posts/recent',
+            PostsController.getRecentPosts.bind(PostsController),
+            );
 
-server.delete(
-  '/my-posts/:id(\\d+)',
-  authenticateToken,
-  MyPostsController.deletePost.bind(MyPostsController),
-);
+            server.put(
+            '/my-posts/:id(\\d+)',
+            authenticateToken,
+            MyPostsController.updatePost.bind(MyPostsController),
+            );
 
-server.get('/posts', PostsController.getAllPosts.bind(PostsController));
-server.get(
-  '/posts/recent',
-  PostsController.getRecentPosts.bind(PostsController),
-);
+            server.delete(
+            '/my-posts/:id(\\d+)',
+            authenticateToken,
+            MyPostsController.deletePost.bind(MyPostsController),
+            );
+
+          server.get('/posts', PostsController.getAllPosts.bind(PostsController));
+          
+          server.get(
+          '/posts/recent',
+          PostsController.getRecentPosts.bind(PostsController),
+          );
 
 server.post(
-  '/my-songs',
+  '/song',
   authenticateToken,
   MySongsController.createSong.bind(MySongsController),
 );
@@ -69,12 +71,31 @@ server.get(
   '/songs',
   SongsController.getAllSongs.bind(SongsController),
 );
+server.get(
+  '/my-songs',
+  authenticateToken,
+  SongsController.getAllSongs.bind(SongsController),
+);
 
 server.get('/home', SongsController.getAllSongs.bind(SongsController));
+
 server.get(
   '/home/recent',
   SongsController.getRecentSongs.bind(SongsController),
 );
+
+server.put(
+  '/song/:id(\\d+)',
+  authenticateToken,
+  MySongsController.updateSong.bind(MySongsController),
+);
+
+  server.delete(
+  '/song/:id(\\d+)',
+  authenticateToken,
+  MySongsController.deleteSong.bind(MySongsController),
+);
+
 
 
 

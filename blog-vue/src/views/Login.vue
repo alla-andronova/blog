@@ -3,7 +3,7 @@
     <body>
     <form class="box" action="login" method="post"> 
         <h1>Sign In</h1>
-        <input type="text" v-model="email" placeholder="email">
+        <input type="text" v-model="email" placeholder="Email">
         <input type="password" v-model="password" placeholder="Password">
         <input type="submit" name="" value="Login" @click="login">
     </form>

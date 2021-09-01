@@ -18,6 +18,14 @@ const mutations = {
   SET_ALL_SONGS(state, allSongs) {
     state.allSongs = allSongs;
   },
+
+  SET_UPDATE_SONG(state, updateSong) {
+    state.updateSong = updateSong;
+  },
+
+  SET_DELETE_SONG(state, deleteSong) {
+    state.deleteSong = deleteSong;
+  },
 };
 
 export default mutations;

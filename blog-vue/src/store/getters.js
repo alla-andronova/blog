@@ -8,6 +8,12 @@ const getters = {
   allSongs(state) {
     return state.allSongs;
   },
+  updateSong(state) {
+    return state.updateSong;
+  },
+  deleteSong(state) {
+    return state.deleteSong;
+  },
 };
 
 export default getters;
