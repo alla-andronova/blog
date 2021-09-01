@@ -4,6 +4,7 @@ import Home from '../views/Home.vue';
 import AllPosts from '../views/AllPosts.vue';
 import Register from '../views/Register.vue';
 import Login from '../views/Login.vue';
+import Songs from '../views/Songs.vue';
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login,
+  },
+  {
+    path: '/songs',
+    name: 'songs',
+    component: Songs,
   },
   
 ];

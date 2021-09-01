@@ -5,6 +5,9 @@ const getters = {
   recentSongs(state) {
     return state.recentSongs;
   },
+  allSongs(state) {
+    return state.allSongs;
+  },
 };
 
 export default getters;

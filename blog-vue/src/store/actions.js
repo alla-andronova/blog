@@ -22,6 +22,13 @@ const actions = {
 
     commit('SET_RECENT_SONGS', response.data);
   },
+
+  async getAllSongs({ commit }) {
+    const response = await axios.get('http://localhost:3000/songs');
+    console.log(response);
+
+    commit('SET_ALL_SONGS', response.data);
+  },
 };
 
 export default actions;
