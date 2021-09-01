@@ -19,7 +19,7 @@
         :key="song.id">
         <td>{{ song.title }}</td>
         <td>{{ song.artist }}</td>
-        <td>{{ song.albumy }}</td>
+        <td>{{ song.album }}</td>
         <td>{{ song.genre }}</td>
         
     </tr>

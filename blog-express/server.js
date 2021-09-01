@@ -67,8 +67,7 @@ server.post(
 );
 server.get(
   '/songs',
-  authenticateToken,
-  MySongsController.getAllSongs.bind(MySongsController),
+  SongsController.getAllSongs.bind(SongsController),
 );
 
 server.get('/home', SongsController.getAllSongs.bind(SongsController));
