@@ -35,6 +35,12 @@ class LoginController {
         res.json({ error: 'login failed' });
         return;
       }
+      const token = user.createToken();
+      res.json({
+        message: 'user logged in succesfully',
+        token,
+        user,
+      });
     } catch (error) {
       res
         .json({
@@ -43,13 +49,6 @@ class LoginController {
         .status(500);
       return;
     }
-
-    const token = user.createToken();
-    res.json({
-      message: 'user logged in succesfully',
-      token,
-      user,
-    });
   }
 }
 
