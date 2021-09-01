@@ -18,6 +18,11 @@ const actions = {
     commit('setUser', user);
   },
 
+  logout({ commit }) {
+    commit('logout');
+    userToken.unset();
+  },
+
   async getRecentPosts({ commit }) {
     const response = await axios.get('http://localhost:3000/posts/recent');
     console.log(response);

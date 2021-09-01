@@ -1,10 +1,13 @@
 const mutations = {
-  setToken (state, token) {
-    state.token = token
-    state.isUserLoggedIn = !!(token)
+  setToken(state, token) {
+    state.token = token;
+    state.isUserLoggedIn = !!token;
   },
-  setUser (state, user) {
-    state.user = user
+  setUser(state, user) {
+    state.user = user;
+  },
+  logout(state) {
+    state.user = null;
   },
 
   SET_RECENT_POSTS(state, recentPosts) {

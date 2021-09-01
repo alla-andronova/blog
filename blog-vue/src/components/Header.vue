@@ -6,13 +6,17 @@
 
         <nav class="nav">
           <router-link class="nav_link" to="/songs">Songs</router-link>
+
           <span v-if="!user">
             <router-link class="nav_link" to="/login">Login</router-link>
 
             <router-link class="nav_link" to="/register">Register</router-link>
           </span>
 
-          <span v-else>Hello {{ user.nickname }}</span>
+          <span v-else>
+            <span class="nav_link">Hello {{ user.nickname }}</span>
+            <a class="nav_link" @click="logoutUser">Logout</a>
+          </span>
         </nav>
       </div>
     </div>
@@ -26,6 +30,16 @@ export default {
   computed: {
     user() {
       return this.$store.getters.user;
+    },
+  },
+
+  methods: {
+    logoutUser() {
+      console.log('fhbkdh');
+      this.$store.dispatch('logout');
+      this.$router.push({
+        path: '/',
+      });
     },
   },
 };
