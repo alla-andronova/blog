@@ -1,14 +1,20 @@
 <template>
-    <div>
-        <article>
-        <h3>{{ title }}</h3>
-        <p>
-            {{ artist }}
-            <span>{{ album }}</span>
-            <span>{{ albumImageUrl }}</span>
-        </p>
-        </article>
-    </div>
+   <!-- <div class="songs ">
+        <div class="song__item ">
+        <div>{{ title }}</div>
+            <div class="song__img">
+        <img class="song__img" :src="albumImageUrl" /></div>
+        <div class="song__fotter">
+           <div> {{ artist }}
+            {{ album }}
+            {{ genre }}
+            </div>
+            
+        </div>
+        </div>
+    </div>  -->
+<div></div>
+
 </template>
 
 <script>
@@ -24,4 +30,7 @@ name: 'Song',
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+
+</style>

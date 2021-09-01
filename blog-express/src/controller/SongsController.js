@@ -21,7 +21,7 @@ class SongsController {
 
     async getRecentSongs(req, res) {
         try {
-        const recentSongs = await this.songRepository.findRecentSongs(3);
+        const recentSongs = await this.songRepository.findRecentSongs(15);
 
         res.json(recentSongs);
         } catch (error) {

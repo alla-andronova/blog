@@ -27,11 +27,16 @@ h1,h2,h3,h4,h5,h6{
 margin: 0;
 }
 
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
 
 body{
   margin: 0  ;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.2rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: #333;
   background:

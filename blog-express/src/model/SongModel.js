@@ -1,24 +1,22 @@
 class SongModel {
     constructor({
         id = null,
-        userId,
+        user_id,
         title,
         artist,
         genre,
         album,
         albumImageUrl,
         createdAt = null,
-        author = null,
     }) {
         this.id = id;
-        this.userId = userId;
+        this.user_id = user_id;
         this.title = title;
         this.artist = artist;
         this.genre = genre;
         this.album = album;
         this.albumImageUrl = albumImageUrl;
         this.createdAt = createdAt;
-        this.author = author;
     }
 }
 module.exports = SongModel;

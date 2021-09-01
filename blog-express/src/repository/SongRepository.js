@@ -11,8 +11,8 @@ class SongRepository {
         rows,
         ] = await this._db
         .promise()
-        .execute('INSERT INTO songs ( user_id, title, artist, genre, album, albumImageUrl) VALUES(?,?,?) ', [
-            song.userId,
+        .execute('INSERT INTO songs ( user_id, title, artist, genre, album, albumImageUrl) VALUES(?,?,?,?,?,?) ', [
+            song.user_id,
             song.title,
             song.artist,
             song.genre,
@@ -21,17 +21,17 @@ class SongRepository {
         ]);
     }
 
-    async findSongsByUserId(userId) {
+    async findSongsByUserId(user_id) {
         const [
         rows,
         ] = await this._db
         .promise()
-        .execute('SELECT * FROM songs WHERE user_id=? ', [userId]);
+        .execute('SELECT * FROM songs WHERE user_id=? ', [user_id]);
         return rows.map(
         row =>
             new SongModel({
             id: row.id,
-            userId: row.userId,
+            user_id: row.user_id,
             title: row.title,
             artist: row.artist,
             genre: row.genre,
@@ -46,13 +46,13 @@ class SongRepository {
         const [rows] = await this._db
         .promise()
         .execute(
-            'SELECT songs.*, users.nickname FROM songs JOIN users on users.id = songs.user_id',
+            'SELECT songs.*, users.nickname FROM songs JOIN users on user_id = songs.user_id',
         );
         return rows.map(
         row =>
             new SongModel({
             id: row.id,
-            userId: row.userId,
+            user_id: row.user_id,
             title: row.title,
             artist: row.artist,
             genre: row.genre,
@@ -70,21 +70,20 @@ class SongRepository {
         ] = await this._db
         .promise()
         .execute(
-            'SELECT songs.*, users.nickname FROM songs JOIN users on users.id = songs.user_id ORDER BY songs.id DESC LIMIT ?',
+            'SELECT * FROM songs',
             [count],
         );
         return rows.map(
         row =>
             new SongModel({
             id: row.id,
-            userId: row.userId,
+            user_id: row.user_id,
             title: row.title,
             artist: row.artist,
             genre: row.genre,
             album: row.album,
             albumImageUrl: row.albumImageUrl,
             createdAt: row.createdAt,
-            author: row.nickname,
             }),
         );
     }

@@ -19,10 +19,10 @@ const schema = Joi.object({
         }
         const { title, artist, genre, album, albumImageUrl } = req.body;
         //расшифрованный пейлоад из токена в котором хранится текущий айди юзера
-        const userId = req.user.id;
+        const user_id = req.user.id;
 
         try {
-        await this.songRepository.createSong({ title, artist, genre, album, albumImageUrl, userId });
+        await this.songRepository.createSong({ title, artist, genre, album, albumImageUrl, user_id });
 
         res.json({
             message: 'the song created succesfully',
@@ -37,9 +37,9 @@ const schema = Joi.object({
     }
 
     async getAllSongs(req, res) {
-        const userId = req.user.id;
+        const user_id = req.user.id;
         try {
-        const usersSongs = await this.songRepository.findSongsByUserId(userId);
+        const usersSongs = await this.songRepository.findSongsByUserId(user_id);
 
         res.json(usersSongs);
         } catch (error) {
