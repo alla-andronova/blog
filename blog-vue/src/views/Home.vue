@@ -6,7 +6,8 @@
       <div class="intro__inner">
         <h1 class="intro__title">Music world around you</h1>
 
-          <div class="content clearfix" v-for="song in recentSongs"
+          <div class="content clearfix" 
+      v-for="song in recentSongs"
       :title="song.title"
       :artist="song.artist"
       :genre="song.genre"
@@ -28,14 +29,6 @@
               </div>
               </div>
             </div>
-          
-          <Song
-      v-for="song in recentSongs"
-      :title="song.title"
-      :artist="song.artist"
-      :genre="song.genre"
-      :albumImageUrl="song.albumImageUrl"
-      :key="song.id"/>
       </div>
     </div>
   </div>
@@ -46,7 +39,7 @@
 </template>
 
 <script>
-import Song from '../components/Song';
+//import Song from '../components/Song';
 // import { mapGetters } from 'vuex';
 // import { mapState } from 'vuex';
 // import axios from 'axios';
@@ -54,7 +47,7 @@ import Song from '../components/Song';
 export default {
   name: 'Home',
   components: {
-    Song
+
   },
   props: {
         title: String,
@@ -78,47 +71,44 @@ export default {
 
 <style scoped>
 .content{
-    width: 90%;
-    margin: 30px auto 30px;
-    border: 3px solid black;
+    width: 65%;
+    margin: 3rem auto 3rem;
+    border: 0.3rem solid black;
     border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
     
 }
 .main.content{
     width: 70%;
     float: left;
-    border: 1px solid blue;
 }
 
 .recent-post-title{
-  margin: 20px;
+  margin: 2rem;
 }
 
 .post{
     width: 95%;
     height: 270px;
-    margin: 20px auto;
-    border-radius: 5px;
+    margin: 2rem auto;
+    border-radius: .9rem;
     position: relative;
-    text-decoration: none;
-    
+    color: whitesmoke;
 }
 
 .post-image{
-    width: 40%;
+    width: 25%;
     height: 100%;
     float: left;
 }
 .post-preview{
   width: 60%;
-  padding: 10px;
+  padding: 1.2rem;
   float:right;
   text-decoration: none;
 }
 .btn{
   padding: 1rem 1.5rem;
-  background: royalblue;
-  color: #000;
+  color: silver;
   border: 1px solid transparent;
   border-radius: .25rem;
 }
@@ -128,16 +118,15 @@ export default {
 }
 .read-more{
 position: absolute;
-bottom: 10px;
-right: 10px;
-border: 1px solid green;
+bottom: 0.01rem;
+right: 0.5rem;
 background: transparent;
-border: 3px solid black;
+border: 0.3rem solid black;
 border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
 }
 
 .read-more:hover{
-  background: tomato;
+  background: grey;
   color: antiquewhite !important;
   transition: .25s;
 }

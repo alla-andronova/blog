@@ -6,5 +6,6 @@ const state = {
   
   recentPosts: [],
   recentSongs: [],
+  allSongs: [],
 };
 export default state;
