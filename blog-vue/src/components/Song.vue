@@ -1,5 +1,5 @@
 <template>
-   <!-- <div class="songs ">
+  <!-- <div class="songs ">
         <div class="song__item ">
         <div>{{ title }}</div>
             <div class="song__img">
@@ -12,25 +12,22 @@
             
         </div>
         </div>
-    </div>  -->
-<div></div>
-
+  </div>-->
+  <div></div>
 </template>
 
 <script>
 export default {
-name: 'Song',
-    props: {
-        title: String,
-        artist: String,
-        genre: String,
-        album: String,
-        albumImageUrl: String,
-    },
+  name: 'Song',
+  props: {
+    title: String,
+    artist: String,
+    genre: String,
+    album: String,
+    albumImageUrl: String,
+  },
 };
 </script>
 
 <style scoped>
-
-
 </style>

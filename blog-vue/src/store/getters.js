@@ -8,6 +8,9 @@ const getters = {
   allSongs(state) {
     return state.allSongs;
   },
+  user(state) {
+    return state.user;
+  },
 };
 
 export default getters;
