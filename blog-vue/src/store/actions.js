@@ -1,14 +1,23 @@
 import axios from 'axios';
 
-const actions = {
-  setToken ({commit}, token) {
-    commit('setToken', token)
+const userToken = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
-  setUser ({commit}, user) {
-    commit('setUser', user)
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
+
+const actions = {
+  setToken({ commit }, token) {
+    userToken.set(token);
+    commit('setToken', token);
+  },
+  setUser({ commit }, user) {
+    commit('setUser', user);
   },
 
-  
   async getRecentPosts({ commit }) {
     const response = await axios.get('http://localhost:3000/posts/recent');
     console.log(response);

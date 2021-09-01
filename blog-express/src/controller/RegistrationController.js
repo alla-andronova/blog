@@ -41,7 +41,7 @@ class RegistrationController {
 
       res.json({
         message: 'user created succesfully',
-        savedUser,
+        user: savedUser,
         token,
       });
     } catch (error) {
