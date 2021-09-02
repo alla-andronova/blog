@@ -25,13 +25,14 @@ class SongRepository {
   }
 
   async updateSong(song) {
+    console.log('updateSong:', song);
     const [
       rows,
     ] = await this._db
       .promise()
       .execute(
-        'UPDATE songs SET title = ?, artist = ?, genre = ?, album = ?, albumImageUrl = ?',
-        [song.title, song.artist, song.genre, song.album, song.albumImageUrl],
+        'UPDATE songs SET title = ?, artist = ?, genre = ?, album = ? WHERE id = ?',
+        [song.title, song.artist, song.genre, song.album, song.id],
       );
   }
 
@@ -39,6 +40,34 @@ class SongRepository {
     const [
       rows,
     ] = await this._db.promise().execute('DELETE FROM songs where id=?', [id]);
+  }
+
+  async findSongById(id) {
+    const [
+      rows,
+    ] = await this._db
+      .promise()
+      .execute(
+        'SELECT songs.*, users.nickname FROM songs JOIN users on users.id = songs.user_id WHERE songs.id=? ',
+        [id],
+      );
+    if (rows.length === 0) {
+      return null;
+    }
+
+    const row = rows[0];
+
+    return new SongModel({
+      id: row.id,
+      user_id: row.user_id,
+      title: row.title,
+      artist: row.artist,
+      genre: row.genre,
+      album: row.album,
+      albumImageUrl: row.albumImageUrl,
+      createdAt: row.createdAt,
+      addedBy: row.nickname,
+    });
   }
 
   async findSongsByUserId(user_id) {

@@ -1,20 +1,19 @@
 <template>
-  <div>
-    <body>
-    <Header/>
-      <router-view />
-    </body>
-  </div>
+<div>
+  <body style="background: url(/img/intro.9bf6e0d0.jpg)">
+    <Header />
+    <router-view />
+  </body>
+</div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
+import Header from './components/Header.vue';
 
 export default {
-  
   name: 'App',
   components: {
-    Header
+    Header,
   },
 };
 </script>
@@ -23,45 +22,52 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=New+Rocker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-h1,h2,h3,h4,h5,h6{
-margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 
-.clearfix::after{
+.clearfix::after {
   content: '';
   display: block;
   clear: both;
 }
 
-body{
-  margin: 0  ;
+body {
+  margin: 0;
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   color: #333;
+<<<<<<< HEAD
   background:
   url("./assets/intro.jpg");
+=======
+  background: url('./assets/intro.jpg');
+>>>>>>> 8b547718408f29046749a24fa0bf2ed860ee2417
   background-repeat: no-repeat;
-  -webkit-background-size:cover;
-  background-size:cover;
+  -webkit-background-size: cover;
+  background-size: cover;
 }
 *,
 *:before,
-*:after
-{
+*:after {
   box-sizing: border-box;
 }
 
 /*container*/
-.container{
+.container {
   width: 100%;
   max-width: 200vw;
   margin: 0 auto;
-
 }
 
 /* Intro */
-.intro{
+.intro {
   display: flex;
   flex-direction: column;
   justify-content: top;
@@ -69,46 +75,45 @@ body{
   height: 100vh;
 
   -webkit-background-size: cover;
-  background-size:cover;
+  background-size: cover;
 }
 
-.intro__title{
+.intro__title {
   font-family: 'New Rocker', cursive;
-  font-size:3rem;
+  font-size: 3rem;
   font-weight: 900;
   text-transform: uppercase;
-  color:whitesmoke;
+  color: whitesmoke;
   margin-top: 12vh;
 }
 
-.intro__inner{
+.intro__inner {
   width: 100%;
   max-width: 80vw;
   margin: 0 auto;
   text-align: center;
 }
 
-.btn{
+.btn {
   display: inline-block;
   vertical-align: bottom;
   padding: 1vh;
   border: 1.5px solid #fff;
   font-size: 14px;
   font-weight: 700;
-  color:whitesmoke;
+  color: whitesmoke;
   text-decoration: none;
 
-  transition: background .1s
-  linear, color .1s linear;
+  transition: background 0.1s linear, color 0.1s linear;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: lightgray;
-  color:black
+  color: black;
 }
 
 /* Header */
-.header{
+.header {
   width: 100%;
   position: absolute;
   top: 0;
@@ -117,7 +122,7 @@ body{
   z-index: 1000;
 }
 
-.header__logo{
+.header__logo {
   font-family: 'New Rocker', cursive;
   padding-left: 4vw;
   font-size: 3rem;
@@ -125,51 +130,50 @@ body{
   color: #aaa9ad;
 }
 
-.header__inner{
+.header__inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 /* Nav */
-.nav{
+.nav {
   font-size: 1.25rem;
   text-transform: uppercase;
-
 }
 
-.nav_link{
+.nav_link {
   display: inline-block;
   vertical-align: top;
   margin: 0 15px;
   position: relative;
   color: #aaa9ad;
   text-decoration: none;
-  transition: color .2s linear;
+  transition: color 0.2s linear;
 }
 
-.nav_link:after{
-  content: "";
+.nav_link:after {
+  content: '';
   width: 100%;
   height: 3px;
   background-color: whitesmoke;
   display: none;
 
   position: absolute;
-  top:100%;
-  left:0;
+  top: 100%;
+  left: 0;
   z-index: 1;
 }
 
-.nav_link:hover{
+.nav_link:hover {
   color: whitesmoke;
 }
 
-.nav_link:hover:after{
+.nav_link:hover:after {
   display: block;
 }
 /* Article*/
-.songs{
+.songs {
   width: 100%;
   position: relative;
   top: 0;
@@ -179,12 +183,11 @@ body{
   display: flex;
   justify-content: space-between;
 }
-.article{
-  width: 30%
+.article {
+  width: 30%;
 }
-.article_img{
+.article_img {
   width: 19rem;
   height: 19rem;
 }
-
 </style>

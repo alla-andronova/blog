@@ -19,6 +19,21 @@ class SongsController {
     }
   }
 
+  async getSongById(req, res) {
+    try {
+      const song = await this.songRepository.findSongById(req.params.id);
+
+      res.json(song);
+    } catch (error) {
+      console.log(error);
+      res
+        .json({
+          error: 'something went wrong',
+        })
+        .status(500);
+    }
+  }
+
   async getRecentSongs(req, res) {
     try {
       const recentSongs = await this.songRepository.findRecentSongs(15);
