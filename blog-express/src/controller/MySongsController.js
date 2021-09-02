@@ -39,6 +39,7 @@ class MySongsController {
         message: 'the song created succesfully',
       });
     } catch (error) {
+      console.log(error);
       res
         .json({
           error: 'something went wrong',
@@ -108,7 +109,7 @@ class MySongsController {
           .status(404);
       } else {
         const { title, artist, genre, album } = req.body;
-          (song.title = title),
+        (song.title = title),
           (song.artist = artist),
           (song.genre = genre),
           (song.album = album),
@@ -117,14 +118,11 @@ class MySongsController {
         res.json(song);
       }
     } catch (error) {
-      
       res
         .json({
           error: 'something went wrong',
-          
         })
         .status(500);
-        
     }
   }
 }

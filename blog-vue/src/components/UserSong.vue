@@ -1,38 +1,36 @@
 <template>
-<div>
+  <div>
     <div class="intro">
       <h1 class="intro__title">Music world around you</h1>
-      
+
       <div class="container">
         <div class="intro__inner">
-          
-
           <div class="main.content">
             <div class="post">
               <img :src="albumImageUrl" class="post-image" />
               <div class="post-preview">
                 <div class="form">
-                <form action="login" method="post">
-                <fieldset class="fieldset">
-      <div class="form-group">
-        <label for="title">Song title:</label>
-                <input v-model="titleInput" id="title" :placeholder="title "/>
-            </div>
-            <div class="form-group">
-                <label for="artist">Artist:</label>
-                <input v-model="artistInput" id="artist" :placeholder=" artist "/>
-            </div>
-            <div class="form-group">
-                <label for="genre">Genre:</label>
-                <input v-model="genreInput" id="genre" :placeholder=" genre "/>
-            </div>
-            <div class="form-group">
-                <label for="album">Album:</label>
-                <input v-model="albumInput" id="album" :placeholder="album"/>
-            </div>
-        
-        </fieldset>
-                </form></div>
+                  <form action="login" method="post">
+                    <fieldset class="fieldset">
+                      <div class="form-group">
+                        <label for="title">Song title:</label>
+                        <input v-model="titleInput" id="title" :placeholder="title " />
+                      </div>
+                      <div class="form-group">
+                        <label for="artist">Artist:</label>
+                        <input v-model="artistInput" id="artist" :placeholder=" artist " />
+                      </div>
+                      <div class="form-group">
+                        <label for="genre">Genre:</label>
+                        <input v-model="genreInput" id="genre" :placeholder=" genre " />
+                      </div>
+                      <div class="form-group">
+                        <label for="album">Album:</label>
+                        <input v-model="albumInput" id="album" :placeholder="album" />
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
                 <btn @click="update" class="button save">Save Changes</btn>
                 <btn @click="remove" class="button del">Delete</btn>
               </div>
@@ -41,7 +39,7 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
 </template>
 
 <script>
@@ -58,10 +56,10 @@ export default {
   },
   data() {
     return {
-      titleInput: '',
-      artistInput: '',
-      genreInput: '',
-      albumInput: '',
+      titleInput: this.title,
+      artistInput: this.artist,
+      genreInput: this.genre,
+      albumInput: this.album,
     };
   },
   methods: {
@@ -108,44 +106,39 @@ export default {
 </script>
 
 <style scoped>
-h1{
+h1 {
   text-align: center;
 }
 .form {
-    background-color: transparent;
-    height: 25rem;
-    width: 40rem;
-    position: absolute;
-    top: 0%;
-    left: 50%;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-    padding: 0;
-    text-align:center;
-
-    
+  background-color: transparent;
+  height: 25rem;
+  width: 40rem;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  padding: 0;
+  text-align: center;
 }
 label {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 1.9rem;
-    color: whitesmoke;
-    height: auto;
-    width: 15rem;
-    text-align: center;
-    margin-right:1.5rem;
-    float:left;
-    
-    
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.9rem;
+  color: whitesmoke;
+  height: auto;
+  width: 15rem;
+  text-align: center;
+  margin-right: 1.5rem;
+  float: left;
 }
 input {
-    height: auto;
-    width: 16rem;
-    border: 0.1rem solid #000;
-    margin-top: 1rem;
-    font-size: 1.9rem;
-    
+  height: auto;
+  width: 16rem;
+  border: 0.1rem solid #000;
+  margin-top: 1rem;
+  font-size: 1.9rem;
 }
-.container{
+.container {
   border: 0.3rem solid black;
   border-radius: 4% 12% 10% 8% / 2% 2% 4% 8%;
   background: rgba(0, 0, 0, 0.3);
@@ -153,17 +146,15 @@ input {
   top: 25%;
   width: 70%;
   left: 15%;
-  
 }
-.fieldset{
-    display:block;
-    height: 30rem;
-    padding: 3rem;
-    width: 40rem;
-    border: none;
-    
+.fieldset {
+  display: block;
+  height: 30rem;
+  padding: 3rem;
+  width: 40rem;
+  border: none;
 }
-.button{
+.button {
   background: rgba(0, 0, 0, 0.6);
   border: 0.3rem solid black;
   border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
@@ -173,13 +164,13 @@ input {
   padding: 0.35rem;
   cursor: pointer;
 }
-.save{
-position: absolute;
+.save {
+  position: absolute;
   bottom: 0.1rem;
   right: 40rem;
 }
-.del{
-position: absolute;
+.del {
+  position: absolute;
   bottom: 0.1rem;
   right: 20rem;
 }
@@ -238,14 +229,11 @@ position: absolute;
   background: wheat;
 }
 
-
 .read-more:hover {
   background: grey;
   color: antiquewhite !important;
   transition: 0.25s;
 }
-
-
 
 .box h1 {
   color: white;
@@ -270,7 +258,6 @@ position: absolute;
   transition: 0.25px;
   font-size: 1.4rem;
 }
-
 
 .box input[placeholder],
 [placeholder],

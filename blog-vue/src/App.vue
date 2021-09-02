@@ -1,8 +1,8 @@
 <template>
-<div>
+  <div>
     <Header />
-  <router-view />
-</div>
+    <router-view />
+  </div>
 </template>
 
 <script>
@@ -41,13 +41,12 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   color: #333;
-  background:
-  url("./assets/intro.jpg");
+  background: url('./assets/intro.jpg');
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
   height: 100%;
-  min-height:100vh;
+  min-height: 100vh;
   position: relative;
 }
 *,
@@ -145,6 +144,7 @@ body {
   color: #aaa9ad;
   text-decoration: none;
   transition: color 0.2s linear;
+  cursor: pointer;
 }
 
 .nav_link:after {
