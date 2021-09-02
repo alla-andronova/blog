@@ -13,7 +13,7 @@
           </span>
 
           <span v-else>
-            <span class="nav_link">Hello {{ user.nickname }}</span>
+            <router-link class="nav_link" to="/my-songs"> {{ user.nickname }}`s songs</router-link>
             <a class="nav_link" @click="logoutUser">Logout</a>
           </span>
         </nav>

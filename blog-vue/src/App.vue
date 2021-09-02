@@ -40,7 +40,7 @@ body{
   line-height: 1.6;
   color: #333;
   background:
-  url("./assets/intro.jpg") center;
+  url("./assets/intro.jpg");
   background-repeat: no-repeat;
   -webkit-background-size:cover;
   background-size:cover;

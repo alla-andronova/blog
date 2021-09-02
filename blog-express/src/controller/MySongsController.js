@@ -3,7 +3,10 @@ const songRepository = require('../repository/SongRepository');
 
 const schema = Joi.object({
   title: Joi.string().min(3).max(100).required(),
-  text: Joi.string().min(20).required(),
+  artist: Joi.string().min(3).required(),
+  genre: Joi.string().min(3).required(),
+  album: Joi.string().min(3).required(),
+  albumImageUrl: Joi.string().min(3).required(),
 });
 
 class MySongsController {
@@ -15,6 +18,7 @@ class MySongsController {
     const { error } = schema.validate(req.body);
     if (error) {
       res.json({ validations: error }).status(400);
+      console.log(error);
       return;
     }
     const { title, artist, genre, album, albumImageUrl } = req.body;

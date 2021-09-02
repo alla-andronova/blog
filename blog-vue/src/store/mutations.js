@@ -3,11 +3,17 @@ const mutations = {
     state.token = token;
     state.isUserLoggedIn = !!token;
   },
+  
   setUser(state, user) {
     state.user = user;
   },
+
   logout(state) {
     state.user = null;
+  },
+
+  SET_CREATE_SONG(state, song){
+    state.song = song;
   },
 
   SET_RECENT_POSTS(state, recentPosts) {
@@ -28,6 +34,10 @@ const mutations = {
 
   SET_DELETE_SONG(state, deleteSong) {
     state.deleteSong = deleteSong;
+  },
+
+  SET_USERS_SONGS(state, findSongsByUserId) {
+    state.findSongsByUserId = findSongsByUserId;
   },
 };
 

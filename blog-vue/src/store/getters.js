@@ -17,6 +17,12 @@ const getters = {
   deleteSong(state) {
     return state.deleteSong;
   },
+  findSongsByUserId(state) {
+    return state.findSongsByUserId;
+  },
+  song(state) {
+    return state.song;
+  },
 };
 
 export default getters;

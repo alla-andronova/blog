@@ -8,7 +8,6 @@ class SongsController {
   async getAllSongs(req, res) {
     try {
       const allSongs = await this.songRepository.findAllSongs();
-      console.log(allSongs);
 
       res.json(allSongs);
     } catch (error) {

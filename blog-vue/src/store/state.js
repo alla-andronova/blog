@@ -2,12 +2,14 @@ const state = {
   token: null,
   user: null,
   isUserLoggedIn: false,
+  song: null,
 
   recentPosts: [],
   recentSongs: [],
   allSongs: [],
 
   updateSong: [],
-  delteSong: [],
+  deleteSong: [],
+  findSongsByUserId:[],
 };
 export default state;

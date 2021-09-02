@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
+require("dotenv").config();
 
 const server = express();
 
@@ -23,6 +24,12 @@ server.post('/login', LoginController.handleLogin.bind(LoginController));
 server.post(
   '/registration',
   RegistrationController.handleRegistration.bind(RegistrationController),
+);
+
+server.post(
+  '/add-song',
+  authenticateToken,
+  MySongsController.createSong.bind(MySongsController),
 );
 
 server.post(
@@ -61,10 +68,18 @@ server.get(
 );
 
 server.post(
-  '/my-songs',
+  '/add-song',
   authenticateToken,
   MySongsController.createSong.bind(MySongsController),
 );
+
+server.get(
+  '/my-songs',
+  authenticateToken,
+  MySongsController.getAllSongs.bind(MySongsController),
+);
+
+
 server.get('/songs', SongsController.getAllSongs.bind(SongsController));
 
 server.get('/home', SongsController.getAllSongs.bind(SongsController));
