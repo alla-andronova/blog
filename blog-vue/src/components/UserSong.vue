@@ -1,38 +1,46 @@
 <template>
 <div>
-  <body>
     <div class="intro">
+      <h1 class="intro__title">Music world around you</h1>
+      
       <div class="container">
         <div class="intro__inner">
-          <h1 class="intro__title">Music world around you</h1>
+          
 
           <div class="main.content">
             <div class="post">
               <img :src="albumImageUrl" class="post-image" />
-
               <div class="post-preview">
-                <h2>
-                  <p class="recent-post-title">Song: {{ title }}</p>
-                  <p class="preview-text">Artist: {{ artist }}</p>
-                  <p class="preview-text">Genre: {{ genre }}</p>
-                  <p class="preview-text">Album: {{album }}</p>
-                </h2>
-
-                <form class="box" action="login" method="post">
-                  <input type="text" v-model="titleInput" placeholder="Song: {{ title }}" />
-                  <input type="text" v-model="artistInput" placeholder="Artist: {{ artist }}" />
-                  <input type="text" v-model="genreInput" placeholder="Genre: {{ genre }}" />
-                  <input type="text" v-model="albumInput" placeholder="Album: {{ album }}" />
-                </form>
-                <btn @click="update" class="btn Save_Changes">Save Changes</btn>
-                <btn @click="remove" class="btn Delete">Delete</btn>
+                <div class="form">
+                <form action="login" method="post">
+                <fieldset class="fieldset">
+      <div class="form-group">
+        <label for="title">Song title:</label>
+                <input v-model="titleInput" id="title" :placeholder="title "/>
+            </div>
+            <div class="form-group">
+                <label for="artist">Artist:</label>
+                <input v-model="artistInput" id="artist" :placeholder=" artist "/>
+            </div>
+            <div class="form-group">
+                <label for="genre">Genre:</label>
+                <input v-model="genreInput" id="genre" :placeholder=" genre "/>
+            </div>
+            <div class="form-group">
+                <label for="album">Album:</label>
+                <input v-model="albumInput" id="album" :placeholder="album"/>
+            </div>
+        
+        </fieldset>
+                </form></div>
+                <btn @click="update" class="button save">Save Changes</btn>
+                <btn @click="remove" class="button del">Delete</btn>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
 </div>
 </template>
 
@@ -100,6 +108,87 @@ export default {
 </script>
 
 <style scoped>
+h1{
+  text-align: center;
+}
+.form {
+    background-color: transparent;
+    height: 25rem;
+    width: 40rem;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    padding: 0;
+    text-align:center;
+
+    
+}
+label {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.9rem;
+    color: whitesmoke;
+    height: auto;
+    width: 15rem;
+    text-align: center;
+    margin-right:1.5rem;
+    float:left;
+    
+    
+}
+input {
+    height: auto;
+    width: 16rem;
+    border: 0.1rem solid #000;
+    margin-top: 1rem;
+    font-size: 1.9rem;
+    
+}
+.container{
+  border: 0.3rem solid black;
+  border-radius: 4% 12% 10% 8% / 2% 2% 4% 8%;
+  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 25%;
+  width: 70%;
+  left: 15%;
+  
+}
+.fieldset{
+    display:block;
+    height: 30rem;
+    padding: 3rem;
+    width: 40rem;
+    border: none;
+    
+}
+.button{
+  background: rgba(0, 0, 0, 0.6);
+  border: 0.3rem solid black;
+  border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+  height: 3rem;
+  width: 15rem;
+  color: whitesmoke;
+  padding: 0.35rem;
+  cursor: pointer;
+}
+.save{
+position: absolute;
+  bottom: 0.1rem;
+  right: 40rem;
+}
+.del{
+position: absolute;
+  bottom: 0.1rem;
+  right: 20rem;
+}
+
+.button:hover {
+  color: white !important;
+  background: rgba(0, 0, 0, 0.3);
+}
+
 .content {
   width: 65%;
   margin: 3rem auto 3rem;
@@ -125,9 +214,11 @@ export default {
 }
 
 .post-image {
-  width: 40%;
+  width: 25%;
   height: 85%;
   float: left;
+  margin-left: 7rem;
+  margin-top: 2rem;
 }
 .post-preview {
   width: 60%;
@@ -146,14 +237,7 @@ export default {
   color: white !important;
   background: wheat;
 }
-.delete {
-  position: absolute;
-  bottom: 0.01rem;
-  right: 0.5rem;
-  background: transparent;
-  border: 0.3rem solid black;
-  border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
-}
+
 
 .read-more:hover {
   background: grey;
@@ -161,16 +245,7 @@ export default {
   transition: 0.25s;
 }
 
-.box {
-  font-family: 'New Rocker', cursive;
-  width: 400px;
-  padding: 40px;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  top: 35%;
-  left: 70%;
-  position: absolute;
-}
+
 
 .box h1 {
   color: white;
@@ -196,19 +271,14 @@ export default {
   font-size: 1.4rem;
 }
 
-.box input[type='text']:focus,
-.box input[type='password']:focus {
-  width: 280px;
-  border: #2ecc71;
-  text-align: center;
-}
+
 .box input[placeholder],
 [placeholder],
 *[placeholder] {
-  color: red !important;
+  color: black !important;
 }
 ::placeholder {
-  color: red !important;
+  color: black !important;
 }
 .box input[type='submit'] {
   border: 0;

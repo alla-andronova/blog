@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 const userToken = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -21,6 +22,10 @@ const actions = {
   logout({ commit }) {
     commit('logout');
     userToken.unset();
+  },
+
+  SET_CREATE_SONG({ commit },song) {
+    commit('SET_CREATE_SONG',song);
   },
 
   async getRecentPosts({ commit }) {
@@ -57,6 +62,15 @@ const actions = {
 
     commit('SET_DELETE_SONG', response.data);
   },
+
+  async findSongsByUserId({ commit }) {
+    const response = await axios.get('http://localhost:3000/my-songs');
+    console.log(response);
+
+    commit('SET_USERS_SONGS', response.data);
+  },
+
+  
 };
 
 export default actions;

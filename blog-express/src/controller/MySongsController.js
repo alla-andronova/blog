@@ -3,9 +3,10 @@ const songRepository = require('../repository/SongRepository');
 
 const schema = Joi.object({
   title: Joi.string().min(3).max(100).required(),
-  album: Joi.string().min(3).required(),
   artist: Joi.string().min(3).required(),
   genre: Joi.string().min(3).required(),
+  album: Joi.string().min(3).required(),
+  albumImageUrl: Joi.string(),
 });
 
 class MySongsController {
@@ -17,6 +18,7 @@ class MySongsController {
     const { error } = schema.validate(req.body);
     if (error) {
       res.json({ validations: error }).status(400);
+      console.log(error);
       return;
     }
     const { title, artist, genre, album, albumImageUrl } = req.body;
@@ -106,21 +108,23 @@ class MySongsController {
           .status(404);
       } else {
         const { title, artist, genre, album } = req.body;
-        (song.title = title),
+          (song.title = title),
           (song.artist = artist),
           (song.genre = genre),
           (song.album = album),
           // (song.albumImageUrl = albumImageUrl),
           await songRepository.updateSong(song);
-
         res.json(song);
       }
     } catch (error) {
+      
       res
         .json({
           error: 'something went wrong',
+          
         })
         .status(500);
+        
     }
   }
 }

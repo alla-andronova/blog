@@ -1,6 +1,5 @@
 <template>
 <div class="intro">
-  <body>
     <form class="box" action="register" method="post">
       <h1>Sign Up</h1>
       <input type="text" v-model="email" placeholder="Email" />
@@ -8,7 +7,6 @@
       <input type="password" v-model="password" placeholder="Password" />
       <input type="submit" name value="Register" @click.prevent="register" />
     </form>
-  </body>
 </div>
 </template>
 

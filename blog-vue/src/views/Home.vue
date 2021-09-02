@@ -1,6 +1,5 @@
 <template>
 <div>
-  <body>
     <div class="intro">
       <div class="container">
         <div class="intro__inner">
@@ -20,12 +19,12 @@
               <div class="post">
                 <img :src="song.albumImageUrl" class="post-image" />
                 <div class="post-preview">
-                  <h2>
-                    <p>{{ song.title }}</p>
-                    <p class="creator">creator</p>
-
-                    <p class="preview-text">{{ song.artist }}</p>
-                  </h2>
+                  <div>
+                    <p class="preview-text"><span>Song:</span> {{ song.title }}</p>
+                    <p class="preview-text"><span>Artist:</span> {{ song.artist }}</p>
+                    <p class="preview-text"><span>Genre: </span>{{ song.genre }}</p>
+                    <p class="preview-text"><span>Album: </span>{{ song.album }}</p>
+                  </div>
                   <router-link :to="'/song/' + song.id" class="btn read-more">Read More</router-link>
                 </div>
               </div>
@@ -34,7 +33,6 @@
         </div>
       </div>
     </div>
-  </body>
 </div>
 </template>
 
@@ -68,11 +66,15 @@ export default {
 </script>
 
 <style scoped>
+span{
+font-weight: bold;
+}
 .content {
   width: 65%;
   margin: 3rem auto 3rem;
   border: 0.3rem solid black;
   border-radius: 4% 12% 10% 8% / 2% 2% 4% 8%;
+  background: rgba(0, 0, 0, 0.5);
 }
 .main.content {
   width: 70%;
@@ -98,10 +100,12 @@ export default {
   float: left;
 }
 .post-preview {
-  width: 60%;
-  padding: 1.2rem;
-  float: right;
+  width: 90%;
   text-decoration: none;
+  position: relative;
+  left: 10%;
+  font-size: 1.9rem;
+  text-align: left;
 }
 .btn {
   padding: 1rem 1.5rem;

@@ -1,9 +1,7 @@
 <template>
 <div>
-  <body style="background: url(/img/intro.9bf6e0d0.jpg)">
     <Header />
-    <router-view />
-  </body>
+  <router-view />
 </div>
 </template>
 
@@ -43,10 +41,14 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   color: #333;
-  background: url('./assets/intro.jpg');
+  background:
+  url("./assets/intro.jpg");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
+  height: 100%;
+  min-height:100vh;
+  position: relative;
 }
 *,
 *:before,
@@ -67,8 +69,6 @@ body {
   flex-direction: column;
   justify-content: top;
   width: 100%;
-  height: 100vh;
-
   -webkit-background-size: cover;
   background-size: cover;
 }

@@ -3,7 +3,9 @@
     <div class="intro">
       <div class="container">
         <div class="intro__inner">
-          <h1 class="intro__title">Our Songs</h1>
+          <router-link to="/add-song" class="btn read-more">Add Song</router-link>
+          <h1 class="intro__title">Your`s Songs</h1>
+          
         </div>
       </div>
 
@@ -15,7 +17,7 @@
           <th>Genre</th>
         </tr>
         <tr
-          v-for="song in allSongs"
+          v-for="song in findSongsByUserId"
           :title="song.title"
           :artist="song.artist"
           :genre="song.genre"
@@ -30,6 +32,14 @@
           <td>{{ song.genre }}</td>
         </tr>
       </table>
+        <div class="main.content">
+          <h1 class="recent-post-title"></h1>
+            <div class="post">
+                <div class="post-preview">
+                  
+                </div>
+              </div>
+            </div>
     </div>
 </div>
 </template> 
@@ -37,7 +47,7 @@
 
 <script>
 export default {
-  name: 'Songs',
+  name: 'mySongs',
   components: {},
   props: {
     title: String,
@@ -46,17 +56,26 @@ export default {
     album: String,
   },
   computed: {
-    allSongs() {
-      return this.$store.getters.allSongs;
+    findSongsByUserId() {
+      return this.$store.getters.findSongsByUserId;
     },
   },
   mounted() {
-    this.$store.dispatch('getAllSongs');
+    this.$store.dispatch('findSongsByUserId');
   },
 };
 </script>
 
 <style scoped>
+.btn{
+  left: 85%;
+  position: absolute;
+  top: 19.5%;
+  color: silver;
+}
+.read-more:hover{
+color: black;
+}
 .song {
   border-radius: 4% 12% 10% 8% / 2% 2% 4% 8%;
   background: rgba(0, 0, 0, 0.05);
