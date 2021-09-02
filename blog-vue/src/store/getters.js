@@ -11,6 +11,12 @@ const getters = {
   user(state) {
     return state.user;
   },
+  updateSong(state) {
+    return state.updateSong;
+  },
+  deleteSong(state) {
+    return state.deleteSong;
+  },
 };
 
 export default getters;

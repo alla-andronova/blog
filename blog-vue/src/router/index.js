@@ -5,6 +5,7 @@ import AllPosts from '../views/AllPosts.vue';
 import Register from '../views/Register.vue';
 import Login from '../views/Login.vue';
 import Songs from '../views/Songs.vue';
+import Song from '../components/Song.vue';
 
 const routes = [
   {
@@ -16,7 +17,7 @@ const routes = [
     path: '/posts',
     name: 'AllPosts',
     component: AllPosts,
-  }, 
+  },
   {
     path: '/register',
     name: 'register',
@@ -32,7 +33,11 @@ const routes = [
     name: 'songs',
     component: Songs,
   },
-  
+  {
+    path: '/song',
+    name: 'song',
+    component: Song,
+  },
 ];
 
 const router = createRouter({

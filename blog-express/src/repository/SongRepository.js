@@ -24,6 +24,23 @@ class SongRepository {
       );
   }
 
+  async updateSong(song) {
+    const [
+      rows,
+    ] = await this._db
+      .promise()
+      .execute(
+        'UPDATE songs SET title = ?, artist = ?, genre = ?, album = ?, albumImageUrl = ?',
+        [song.title, song.artist, song.genre, song.album, song.albumImageUrl],
+      );
+  }
+
+  async deleteSong(id) {
+    const [
+      rows,
+    ] = await this._db.promise().execute('DELETE FROM songs where id=?', [id]);
+  }
+
   async findSongsByUserId(user_id) {
     const [
       rows,
@@ -62,7 +79,7 @@ class SongRepository {
           album: row.album,
           albumImageUrl: row.albumImageUrl,
           createdAt: row.createdAt,
-          author: row.nickname,
+          addedBy: row.nickname,
         }),
     );
   }

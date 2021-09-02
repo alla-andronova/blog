@@ -3,9 +3,11 @@ const state = {
   user: null,
   isUserLoggedIn: false,
 
-  
   recentPosts: [],
   recentSongs: [],
   allSongs: [],
+
+  updateSong: [],
+  delteSong: [],
 };
 export default state;

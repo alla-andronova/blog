@@ -1,6 +1,6 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const cors = require('cors')
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -65,10 +65,7 @@ server.post(
   authenticateToken,
   MySongsController.createSong.bind(MySongsController),
 );
-server.get(
-  '/songs',
-  SongsController.getAllSongs.bind(SongsController),
-);
+server.get('/songs', SongsController.getAllSongs.bind(SongsController));
 
 server.get('/home', SongsController.getAllSongs.bind(SongsController));
 server.get(
@@ -76,8 +73,23 @@ server.get(
   SongsController.getRecentSongs.bind(SongsController),
 );
 
+server.get(
+  '/my-songs',
+  authenticateToken,
+  MySongsController.getAllSongs.bind(MySongsController),
+);
 
+server.put(
+  '/song/:id(\\d+)',
+  authenticateToken,
+  MySongsController.updateSong.bind(MySongsController),
+);
 
+server.delete(
+  '/song/:id(\\d+)',
+  authenticateToken,
+  MySongsController.deleteSong.bind(MySongsController),
+);
 
 //middleware
 function authenticateToken(req, res, next) {
