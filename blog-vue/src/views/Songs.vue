@@ -24,7 +24,7 @@
           :key="song.id"
         >
           <td>
-            <router-link to="/song/:id(\\d+)" tag="td" class="song">{{ song.title }}</router-link>
+            <router-link :to="'/song/' + song.id" tag="td" class="song">{{ song.title }}</router-link>
           </td>
           <td>{{ song.artist }}</td>
           <td>{{ song.album }}</td>

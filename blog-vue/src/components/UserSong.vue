@@ -6,36 +6,26 @@
         <div class="intro__inner">
           <h1 class="intro__title">Music world around you</h1>
 
-          <div
-            class="content clearfix"
-            v-for="song in recentSongs"
-            :title="song.title"
-            :artist="song.artist"
-            :genre="song.genre"
-            :albumImageUrl="song.albumImageUrl"
-            :key="song.id"
-          >
-            <div class="main.content">
-              <div class="post">
-                <img :src="song.albumImageUrl" class="post-image" />
+          <div class="main.content">
+            <div class="post">
+              <img :src="albumImageUrl" class="post-image" />
 
-                <div class="post-preview">
-                  <h2>
-                    <p class="recent-post-title">Song: {{ song.title }}</p>
-                    <p class="preview-text">Artist: {{ song.artist }}</p>
-                    <p class="preview-text">Genre: {{ song.genre }}</p>
-                    <p class="preview-text">Album: {{ song.album }}</p>
-                  </h2>
+              <div class="post-preview">
+                <h2>
+                  <p class="recent-post-title">Song: {{ title }}</p>
+                  <p class="preview-text">Artist: {{ artist }}</p>
+                  <p class="preview-text">Genre: {{ genre }}</p>
+                  <p class="preview-text">Album: {{album }}</p>
+                </h2>
 
-                  <form class="box" action="login" method="post">
-                    <input type="text" v-model="title1" placeholder="Song: {{ song.title }}" />
-                    <input type="text" v-model="artist2" placeholder="Artist: {{ song.artist }}" />
-                    <input type="text" v-model="genre3" placeholder="Genre: {{ song.genre }}" />
-                    <input type="text" v-model="album4" placeholder="Album: {{ song.album }}" />
-                  </form>
-                  <btn @click="save" class="btn Save_Changes">Save Changes</btn>
-                  <btn @click="delet" class="btn Delete">Delete</btn>
-                </div>
+                <form class="box" action="login" method="post">
+                  <input type="text" v-model="titleInput" placeholder="Song: {{ title }}" />
+                  <input type="text" v-model="artistInput" placeholder="Artist: {{ artist }}" />
+                  <input type="text" v-model="genreInput" placeholder="Genre: {{ genre }}" />
+                  <input type="text" v-model="albumInput" placeholder="Album: {{ album }}" />
+                </form>
+                <btn @click="update" class="btn Save_Changes">Save Changes</btn>
+                <btn @click="remove" class="btn Delete">Delete</btn>
               </div>
             </div>
           </div>
@@ -47,14 +37,10 @@
 </template>
 
 <script>
-//import Song from '../components/Song';
-// import { mapGetters } from 'vuex';
-// import { mapState } from 'vuex';
-// import axios from 'axios';
-
+import axios from 'axios';
 export default {
-  name: 'Home',
-  components: {},
+  name: 'UserSong',
+
   props: {
     title: String,
     artist: String,
@@ -62,15 +48,53 @@ export default {
     album: String,
     albumImageUrl: String,
   },
-
-  computed: {
-    recentSongs() {
-      return this.$store.getters.recentSongs;
-    },
+  data() {
+    return {
+      titleInput: '',
+      artistInput: '',
+      genreInput: '',
+      albumInput: '',
+    };
   },
+  methods: {
+    async update() {
+      try {
+        const id = this.$route.params.id;
+        const response = await axios.put(`http://localhost:3000/song/${id}`, {
+          title: this.titleInput,
+          artist: this.artistInput,
+          genre: this.genreInput,
+          album: this.albumInput,
+        });
+        if (response.data.validations) {
+          alert('Please fill the form correctly');
+        } else if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          this.$router.push({
+            path: '/',
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async remove() {
+      try {
+        const id = this.$route.params.id;
+        const response = await axios.delete(`http://localhost:3000/song/${id}`);
 
-  mounted() {
-    this.$store.dispatch('getRecentSongs');
+        if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          this.$router.push({
+            path: '/',
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
 };
 </script>

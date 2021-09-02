@@ -91,6 +91,11 @@ server.delete(
   MySongsController.deleteSong.bind(MySongsController),
 );
 
+server.get(
+  '/song/:id(\\d+)',
+  SongsController.getSongById.bind(SongsController),
+);
+
 //middleware
 function authenticateToken(req, res, next) {
   //хедер который приходит с фронта

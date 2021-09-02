@@ -6,7 +6,7 @@ class SongModel {
     artist,
     genre,
     album,
-    albumImageUrl,
+    albumImageUrl = null,
     createdAt = null,
     addedBy = null,
   }) {

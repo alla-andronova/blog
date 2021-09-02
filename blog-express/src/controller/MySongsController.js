@@ -3,7 +3,9 @@ const songRepository = require('../repository/SongRepository');
 
 const schema = Joi.object({
   title: Joi.string().min(3).max(100).required(),
-  text: Joi.string().min(20).required(),
+  album: Joi.string().min(3).required(),
+  artist: Joi.string().min(3).required(),
+  genre: Joi.string().min(3).required(),
 });
 
 class MySongsController {
@@ -103,12 +105,12 @@ class MySongsController {
           })
           .status(404);
       } else {
-        const { title, artist, genre, album, albumImageUrl } = req.body;
+        const { title, artist, genre, album } = req.body;
         (song.title = title),
           (song.artist = artist),
           (song.genre = genre),
           (song.album = album),
-          (song.albumImageUrl = albumImageUrl),
+          // (song.albumImageUrl = albumImageUrl),
           await songRepository.updateSong(song);
 
         res.json(song);

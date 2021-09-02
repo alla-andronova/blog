@@ -26,7 +26,7 @@
 
                     <p class="preview-text">{{ song.artist }}</p>
                   </h2>
-                  <router-link to="/home" class="btn read-more">Read More</router-link>
+                  <router-link :to="'/song/' + song.id" class="btn read-more">Read More</router-link>
                 </div>
               </div>
             </div>
