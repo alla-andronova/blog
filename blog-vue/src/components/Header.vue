@@ -2,8 +2,7 @@
   <header class="header">
     <div class="container">
       <div class="header__inner">
-        <div class="header__logo">GloW</div>
-
+        <router-link class="header__logo" to="/" style="text-decoration: auto">GloW</router-link>
         <nav class="nav">
           <router-link class="nav_link" to="/songs">Songs</router-link>
 
