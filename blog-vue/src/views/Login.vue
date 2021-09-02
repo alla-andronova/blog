@@ -1,13 +1,11 @@
 <template>
 <div class="intro">
-  <body>
     <form class="box" action="login" method="post">
       <h1>Sign In</h1>
       <input type="text" v-model="email" placeholder="email" />
       <input type="password" v-model="password" placeholder="Password" />
       <input type="submit" name value="Login" @click.prevent="login" />
     </form>
-  </body>
 </div>
 </template>
 

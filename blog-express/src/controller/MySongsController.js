@@ -3,16 +3,10 @@ const songRepository = require('../repository/SongRepository');
 
 const schema = Joi.object({
   title: Joi.string().min(3).max(100).required(),
-<<<<<<< HEAD
   artist: Joi.string().min(3).required(),
   genre: Joi.string().min(3).required(),
   album: Joi.string().min(3).required(),
-  albumImageUrl: Joi.string().min(3).required(),
-=======
-  album: Joi.string().min(3).required(),
-  artist: Joi.string().min(3).required(),
-  genre: Joi.string().min(3).required(),
->>>>>>> 8b547718408f29046749a24fa0bf2ed860ee2417
+  albumImageUrl: Joi.string(),
 });
 
 class MySongsController {
@@ -114,21 +108,23 @@ class MySongsController {
           .status(404);
       } else {
         const { title, artist, genre, album } = req.body;
-        (song.title = title),
+          (song.title = title),
           (song.artist = artist),
           (song.genre = genre),
           (song.album = album),
           // (song.albumImageUrl = albumImageUrl),
           await songRepository.updateSong(song);
-
         res.json(song);
       }
     } catch (error) {
+      
       res
         .json({
           error: 'something went wrong',
+          
         })
         .status(500);
+        
     }
   }
 }

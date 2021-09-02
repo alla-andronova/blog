@@ -1,10 +1,11 @@
 <template>
 <div>
-  <body>
     <div class="intro">
       <div class="container">
         <div class="intro__inner">
-          <h1 class="intro__title">Our Songs</h1>
+          <router-link to="/add-song" class="btn read-more">Add Song</router-link>
+          <h1 class="intro__title">Your`s Songs</h1>
+          
         </div>
       </div>
 
@@ -24,7 +25,7 @@
           :key="song.id"
         >
           <td>
-            <router-link to="/song/:id(\\d+)" tag="td" class="song">{{ song.title }}</router-link>
+            <router-link :to="'/song/' + song.id" tag="td" class="song">{{ song.title }}</router-link>
           </td>
           <td>{{ song.artist }}</td>
           <td>{{ song.album }}</td>
@@ -35,12 +36,11 @@
           <h1 class="recent-post-title"></h1>
             <div class="post">
                 <div class="post-preview">
-                  <router-link to="/add-song" class="btn read-more">Add Song</router-link>
+                  
                 </div>
               </div>
             </div>
     </div>
-  </body>
 </div>
 </template> 
 
@@ -67,6 +67,15 @@ export default {
 </script>
 
 <style scoped>
+.btn{
+  left: 85%;
+  position: absolute;
+  top: 19.5%;
+  color: silver;
+}
+.read-more:hover{
+color: black;
+}
 .song {
   border-radius: 4% 12% 10% 8% / 2% 2% 4% 8%;
   background: rgba(0, 0, 0, 0.05);

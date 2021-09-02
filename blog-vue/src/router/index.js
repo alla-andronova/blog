@@ -5,13 +5,9 @@ import AllPosts from '../views/AllPosts.vue';
 import Register from '../views/Register.vue';
 import Login from '../views/Login.vue';
 import Songs from '../views/Songs.vue';
-<<<<<<< HEAD
 import mySongs from '../views/mySongs.vue';
-import Song from '../components/Song.vue';
 import addSong from '../components/addSong.vue';
-=======
 import Song from '../views/Song.vue';
->>>>>>> 8b547718408f29046749a24fa0bf2ed860ee2417
 
 const routes = [
   {

@@ -1,6 +1,5 @@
 <template>
 <div>
-  <body>
     <div class="intro">
       <div class="container">
         <div class="intro__inner">
@@ -32,7 +31,6 @@
         </tr>
       </table>
     </div>
-  </body>
 </div>
 </template> 
 
